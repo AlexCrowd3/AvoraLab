@@ -1,0 +1,493 @@
+.heroSection {
+  background: var(--bg-light);
+  padding: 32px 0 0;
+}
+
+/* ---------- Шапка кейса (по макету) ---------- */
+.heroTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.heroTopLeft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* Кнопка «Назад» — белая таблетка, радиус 20px как в макете. */
+.backPill {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 20px;
+  background: var(--white);
+  color: #3232329c;
+  font-size: 16px;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+  border: solid 1px #d9d9d96e;
+}
+
+.backPill:hover {
+  transform: translateX(-3px);
+}
+
+.heroTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  opacity: 0.6;
+  min-width: 0;
+}
+
+/* Три таблетки: срок, стек, тип проекта. */
+.heroMeta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.metaPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 45px;
+  padding: 0 20px;
+  border-radius: 24px;
+  background: rgba(17, 17, 17, 0.6);
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.metaPill svg {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.heroCard {
+  display: block;
+  border-radius: var(--radius-3xl);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.heroCardImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.title {
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 600;
+  color: var(--white);
+  max-width: 20ch;
+}
+
+.statsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+}
+
+.coverImg {
+  margin-top: 36px;
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+}
+
+/* ---------- Body ---------- */
+.body {
+  background: var(--bg-light);
+  padding: clamp(50px, 7vw, 80px) 0;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.sectionTitle:not(:first-child) {
+  margin-top: 48px;
+}
+
+.threeCol {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.infoCard {
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-hero-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-2xl);
+  padding: 32px;
+}
+
+.blockTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.blockText {
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Маркеры-точки вместо галочек. */
+.featureDot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.blockIcon {
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.techRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.techTag {
+  background: var(--white);
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 500;
+  padding: 15px 30px;
+  border-radius: var(--radius-2xl);
+  border: solid 1px #d9d9d96e;
+}
+
+/* ---------- CTA ---------- */
+.ctaSection {
+  background: var(--bg-light);
+  padding-bottom: clamp(60px, 8vw, 100px);
+}
+
+.ctaCard {
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-hero-card);
+  border-radius: var(--radius-3xl);
+  --cta-pad: clamp(40px, 5vw, 64px);
+  padding: var(--cta-pad);
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.ctaGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(45% 60% at var(--mx, 20%) var(--my, 40%), rgba(252, 128, 3, 0.6), transparent 70%);
+  filter: blur(60px);
+}
+
+.ctaText {
+  position: relative;
+  z-index: 1;
+  flex: 1.1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ctaEyebrow {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--orange);
+}
+
+.ctaTitle {
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 600;
+  color: var(--white);
+}
+
+.ctaSubtext {
+  max-width: 50ch;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.ctaVisual {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  /* Картинка стоит вплотную к нижнему краю карточки (отрицательный отступ
+     гасит внутренний padding) и выезжает прямо из него: в скрытом
+     состоянии она целиком уведена вниз и обрезана границей карточки. */
+  align-self: flex-end;
+  margin-bottom: calc(var(--cta-pad) * -1);
+  opacity: 0;
+  transform: translateY(100%) scale(120%);
+  transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ctaVisualIn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ctaVisualImg {
+  width: 100%;
+  height: auto;
+  max-width: 700px;
+  display: block;
+}
+
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gradient-orange);
+  color: var(--bg-light);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 28px;
+  border-radius: var(--radius-xl);
+  transition: transform 0.2s ease;
+}
+
+.ctaPrimary:hover {
+  transform: translateY(-2px);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff36;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 28px;
+  border-radius: var(--radius-xl);
+  transition: transform 0.2s ease;
+  box-shadow: inset 3px 3px 3px rgba(255, 255, 255, 0.25), inset -3px -3px 3px rgba(255, 255, 255, 0.10);
+}
+
+.ctaSecondary:hover {
+  transform: translateY(-2px);
+}
+
+/* ---------- Шапка кейса: планшет и ноутбук ---------- */
+@media (max-width: 1400px) {
+  .heroTitle {
+    font-size: 20px;
+  }
+
+  .metaPill {
+    height: 44px;
+    padding: 0 16px;
+    font-size: 17px;
+    gap: 8px;
+  }
+
+  .heroMeta {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .heroTopBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .heroMeta {
+    gap: 10px;
+  }
+
+  .metaPill {
+    height: 40px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 900px) {
+
+  /* На узких экранах название переносится под кнопку «Назад». */
+  .heroCard {
+    border-radius: 28px;
+  }
+
+  .heroTopLeft {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .heroTitle {
+    font-size: 18px;
+  }
+
+  .metaPill {
+    height: 36px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .metaPill svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .threeCol {
+    grid-template-columns: 1fr;
+  }
+
+  .infoCard {
+    border-radius: 28px;
+  }
+
+  .statsRow {
+    gap: 10px;
+  }
+
+  .stat {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .coverImg {
+    max-height: 300px;
+  }
+
+  .techTag {
+    font-size: 16px;
+    padding: 14px 22px;
+  }
+
+  .ctaCard {
+    flex-direction: column;
+    border-radius: 28px;
+  }
+
+  .ctaVisual {
+    width: 150%;
+    transform: translateX(17.5%);
+    min-height: 0;
+    /* На мобильном текст сверху, картинка под ним. */
+    order: 1;
+  }
+
+  .ctaText {
+    order: 0;
+  }
+
+  .ctaRow {
+    flex-direction: column;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    justify-content: center;
+  }
+}
+
+
+/* ---------- Только Laptop 1024 ---------- */
+/* Картинка телефона крупнее, а текст компактнее: заголовок при 37px
+   переносился на две строки, теперь помещается в одну. */
+@media (min-width: 981px) and (max-width: 1100px) {
+  .ctaVisualImg {
+    max-width: 100%;
+    transform: scale(1.18);
+    transform-origin: bottom center;
+  }
+
+  .ctaTitle {
+    font-size: 28px;
+    white-space: nowrap;
+  }
+
+  .ctaSubtext {
+    font-size: 15px;
+    max-width: 40ch;
+  }
+
+  .ctaEyebrow {
+    font-size: 14px;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    font-size: 15px;
+    padding: 13px 20px;
+  }
+}

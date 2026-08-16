@@ -1,0 +1,219 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+
+.searchInput {
+  flex: 1 1 500px;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 12px 20px;
+  color: rgba(17, 17, 17, 0.4);
+}
+
+.searchInput input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.searchInput input::placeholder {
+  color: rgba(17, 17, 17, 0.4);
+}
+
+.clearInput {
+  display: flex;
+  border: none;
+  background: rgba(17, 17, 17, 0.08);
+  color: rgba(17, 17, 17, 0.6);
+  border-radius: 50%;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.filtersBtn,
+.clearFiltersBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 13px 20px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.filtersBtn {
+  background: var(--white);
+  color: rgba(50, 50, 50, 0.8);
+  border: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.filtersBtnActive {
+  background: rgba(50, 50, 50, 0.85);
+  color: var(--white);
+}
+
+.clearFiltersBtn {
+  background: rgba(17, 17, 17, 0.9);
+  color: #f8f8f8;
+}
+
+.filtersBtn:hover,
+.clearFiltersBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding-top: 20px;
+}
+
+.label {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(50, 50, 50, 0.8);
+  margin-bottom: 20px;
+}
+
+/* ---------- Project type checkboxes ---------- */
+.typeCol {
+  flex: 1 1 420px;
+  max-width: 460px;
+}
+
+.checkGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background: var(--white);
+  border: solid 1px #d9d9d952;
+  border-radius: var(--radius-lg);
+  padding: 12px 25px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(17, 17, 17, 0.8);
+  white-space: nowrap;
+  transition: transform 0.15s ease;
+}
+
+.checkItem:hover {
+  transform: translateY(-1px);
+}
+
+.checkItemOn {
+  background: var(--gradient-orange);
+  color: var(--white);
+}
+
+/* ---------- Price slider ---------- */
+.priceCol {
+  flex: 1 1 380px;
+  max-width: 450px;
+}
+
+.priceLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(17, 17, 17, 0.5);
+  margin-bottom: 10px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(
+    to right,
+    var(--orange) var(--fill, 10%),
+    rgba(17, 17, 17, 0.1) var(--fill, 10%)
+  );
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gradient-orange);
+  cursor: pointer;
+  border: 2px solid var(--white);
+}
+
+.slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gradient-orange);
+  cursor: pointer;
+  border: 2px solid var(--white);
+}
+
+.priceValue {
+  display: block;
+  margin-top: 20px;
+  font-size: 32px;
+  font-weight: 600;
+  background: var(--gradient-orange);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 640px) {
+  /* Таблетки по размеру текста, а не на всю ширину: несколько коротких
+     названий помещаются в одну строку, длинные переносятся сами. */
+  .checkItem {
+    width: auto;
+    max-width: 100%;
+    white-space: normal;
+    text-align: left;
+    font-size: 14px;
+    padding: 9px 14px 9px 9px;
+    gap: 8px;
+  }
+  .checkGrid {
+    gap: 8px;
+  }
+}

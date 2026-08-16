@@ -1,0 +1,75 @@
+:root {
+  /* Fonts */
+  --font-display: 'DM Sans', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', 'DM Sans', system-ui, sans-serif;
+
+  /* Base surfaces */
+  --bg-light: #f8f8f8;
+  --bg-dark: #111111;
+  --white: #ffffff;
+
+  /* Text */
+  --text-primary: #111111;
+  --text-body: #323232;
+  --text-on-dark: #ffffff;
+  --text-on-dark-muted-80: rgba(255, 255, 255, 0.8);
+  --text-on-dark-muted-60: rgba(255, 255, 255, 0.6);
+  --text-on-light-muted-80: rgba(17, 17, 17, 0.8);
+  --text-on-light-muted-60: rgba(17, 17, 17, 0.6);
+
+  /* Brand orange */
+  --orange: #fc8003;
+  --orange-2: #fc4e03;
+  --gradient-orange: linear-gradient(75deg, #fc8003 0%, #fc4e03 100%);
+  --gradient-badge-text: linear-gradient(180deg, #fca503 0%, #7d5b1c 100%);
+
+  /* Accent colors per service card */
+  --purple: #8489f5;
+  --purple-2: #a4a8f4;
+  --gradient-purple: linear-gradient(75.3deg, #8489f5 0%, #a4a8f4 100%);
+
+  --teal: #3cc4ae;
+  --teal-2: #5bcac5;
+  --gradient-teal: linear-gradient(75.3deg, #3cc4ae 0%, #5bcac5 100%);
+
+  --blue: #28a8e9;
+  --blue-2: #1c8dc2;
+  --gradient-blue: linear-gradient(16deg, #28a8e9 0%, #1c8dc2 100%);
+
+  /* Neutral darks used across gradient cards */
+  --gray-950: #121214;
+  --gray-800: #252525;
+  --gray-700: #323232;
+  --gray-600: #505050;
+  --gray-500: #505256;
+  --gradient-dark-card: linear-gradient(70.7deg, rgba(64, 64, 64, 0.8) 0%, rgba(17, 17, 17, 0.8) 100%);
+  --gradient-stage-card: linear-gradient(34deg, #505050 0%, #252525 100%);
+  --gradient-hero-card: linear-gradient(32.5deg, #121214 0%, #505256 100%);
+  --gradient-footer-card: linear-gradient(67.5deg, #505050 0%, #252525 100%);
+  --gradient-quiz-panel: linear-gradient(58deg, rgba(18, 18, 20, 0.5) 0%, rgba(80, 82, 86, 0.5) 100%);
+  --gradient-badge-header: linear-gradient(82.4deg, #111111 0%, #5c5c5c 100%);
+
+  /* Light neutrals */
+  --gray-100: #f8f8f8;
+  --gray-150: #e8e8e8;
+  --gray-200: #d9d9d9;
+  --gray-250: #dee1ea;
+  --gradient-light-panel: linear-gradient(86.1deg, #dfdfdf 0%, #f8f8f8 100%);
+
+  /* Radii used throughout the design */
+  --radius-sm: 10px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+  --radius-xl: 40px;
+  --radius-2xl: 50px;
+  --radius-3xl: 60px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.25);
+  --shadow-soft-lg: 0 4px 35px rgba(0, 0, 0, 0.25);
+
+  /* Layout */
+  --page-max: 1920px;
+  --container-pad: clamp(20px, 5vw, 100px);
+}

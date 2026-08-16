@@ -1,0 +1,320 @@
+.hero {
+  position: relative;
+  z-index: 1;
+  overflow-x: clip;
+  overflow-y: visible;
+  background: var(--bg-light);
+}
+
+.inner {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: 60px var(--container-pad) 0;
+  display: grid;
+  grid-template-columns: 1028fr 692fr;
+  gap: clamp(24px, 4vw, 70px);
+  align-items: center;
+}
+
+/* ---------- Text column ---------- */
+.textCol {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(20px, 2.8vw, 40px);
+}
+
+.decorativeLayer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.decorativeFlower {
+  position: absolute;
+  left: 5.5%;
+  top: -9%;
+  width: 50%;
+  height: 100%;
+  transform-origin: 0 0;
+}
+
+.eyebrow,
+.heading,
+.subtext,
+.ctaRow,
+.proof {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(252, 128, 3, 0.1);
+  color: rgba(252, 128, 3, 0.8);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(252, 128, 3, 0.8);
+  flex-shrink: 0;
+}
+
+.heading {
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.headingAccent {
+  color: var(--orange);
+}
+
+.subtext {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: rgba(50, 50, 50, 0.7);
+  max-width: 58ch;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.btnPrimary,
+.btnDark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 30px;
+  border-radius: var(--radius-xl);
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btnPrimary {
+  background: var(--gradient-orange);
+  color: var(--bg-light);
+}
+
+.btnDark {
+  background: rgba(50, 50, 50, 0.05);
+  color: rgba(50, 50, 50, 0.8);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.btnPrimary:hover,
+.btnDark:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.proof {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-light);
+  margin-left: -16px;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.proofText {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+.proofStrong {
+  color: rgba(50, 50, 50, 0.8);
+  font-weight: 600;
+}
+
+.proofSoft {
+  color: rgba(50, 50, 50, 0.6);
+}
+
+/* ---------- Visual column ---------- */
+/* Высота задаётся содержимым, а не единицами вьюпорта: при height:80vh
+   позиция телефона зависела от высоты окна, а его собственный размер —
+   от ширины, поэтому низ телефона совпадал с линией «чёрное/белое»
+   только при одном конкретном сочетании размеров окна. */
+.visualCol {
+  position: relative;
+  z-index: 2;
+  right: 0;
+  width: 120%;
+  height: auto;
+  overflow: visible;
+}
+
+.stage {
+  position: relative;
+  z-index: 5;
+  width: 122%;
+  left: -22%;
+  aspect-ratio: 930 / 800;
+  margin-bottom: 0;
+  overflow: visible;
+}
+
+.phoneWrap {
+  position: absolute;
+  left: 4.7%;
+  top: 4.4%;
+  width: 92.9%;
+  height: 95.6%;
+  overflow: visible;
+}
+
+.phoneImg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+.floatBadge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(232, 232, 232, 0.5);
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius-xl);
+  padding: 5px 25px 5px 5px;
+  font-size: clamp(15px, 1.6vw, 24px);
+  font-weight: 500;
+  color: var(--gray-700);
+  white-space: nowrap;
+}
+
+.floatIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: var(--gray-700);
+  color: #f8f8f8;
+}
+
+.badge1 {
+  left: 60%;
+  top: 60%;
+}
+
+.badge2 {
+  left: 52%;
+  top: 72%;
+}
+
+.badge3 {
+  left: 44%;
+  top: 84%;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1080px) {
+  .inner {
+    grid-template-columns: 1fr;
+    padding-top: 28px;
+  }
+  .visualCol {
+    max-width: 520px;
+    margin-inline: auto;
+    /* height:80vh на мобильном давал ~675px пустоты и уводил телефон далеко
+       вниз — здесь колонка занимает ровно столько, сколько нужно её
+       содержимому. */
+    height: auto;
+    transform: translateY(0);
+  }
+  .textCol {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .heading,
+  .subtext {
+    max-width: 100%;
+  }
+  .ctaRow {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  /* Компактнее типографика и кнопки, чтобы телефон из макета попадал
+     в первый экран без прокрутки. */
+  .textCol {
+    gap: 16px;
+  }
+  .heading {
+    font-size: 24px;
+  }
+  .subtext {
+    font-size: 16px;
+  }
+  .eyebrow {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+  .ctaRow {
+    gap: 10px;
+  }
+  .ctaRow > * {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+  .floatBadge {
+    font-size: 12px;
+    padding: 4px 16px 4px 4px;
+    gap: 6px;
+  }
+  .floatIconWrap {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+  }
+  .floatIconWrap svg {
+    width: 16px;
+    height: 16px;
+  }
+}

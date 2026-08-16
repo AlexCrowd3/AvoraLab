@@ -1,0 +1,236 @@
+.section {
+  background: var(--bg-light);
+  padding: clamp(60px, 8vw, 100px) 0;
+}
+
+.row {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(16px, 2.5vw, 50px);
+  aspect-ratio: 1720 / 400;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-stage-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  padding: 20px 20px 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  background: radial-gradient(
+    280px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.16),
+    transparent 70%
+  );
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover .cardGlow {
+  opacity: 1;
+}
+
+.glow {
+  position: absolute;
+  left: 15%;
+  bottom: -10%;
+  width: 65%;
+  height: 40%;
+  background: rgba(255, 255, 255, 0.4);
+  filter: blur(45px);
+  border-radius: 50%;
+}
+
+.top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.iconBubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 3px 3px 3px rgba(255, 255, 255, 0.25), inset -3px -3px 3px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+
+.number {
+  font-size: clamp(32px, 3vw, 48px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1;
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 264px;
+}
+
+.artWrap {
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0 -10px;
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: bottom;
+  transform-origin: bottom center;
+}
+
+
+/* ---------- Mobile-only horizontal carousel ---------- */
+/* На десктопе выше — обычная сетка из 5 колонок. Карусель со scroll-snap
+   включается только на мобильной/планшетной ширине, по требованию клиента. */
+@media (max-width: 980px) {
+  .row {
+    display: flex;
+    grid-template-columns: unset;
+    aspect-ratio: auto;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 8px 8px 28px;
+    margin-left: -8px;
+    margin-right: -8px;
+    scrollbar-width: thin;
+    /* Такой же нейтральный ползунок, как в карусели отзывов. */
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+  .row::-webkit-scrollbar {
+    height: 6px;
+  }
+  .row::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255);
+    border-radius: 999px;
+  }
+  .card {
+    flex: 0 0 auto;
+    width: min(320px, 78vw);
+    aspect-ratio: 320 / 400;
+    scroll-snap-align: start;
+    height: auto;
+  }
+}
+
+/* ---------- Ноутбуки: все пять карточек в один ряд ---------- */
+/* Карточки слегка уменьшены по ширине, но вытянуты по высоте — так все
+   пять помещаются в одну строку без прокрутки, а картинка и текст
+   внутри остаются читаемыми. */
+@media (min-width: 1101px) and (max-width: 1700px) {
+  .row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    aspect-ratio: auto;
+    overflow-x: visible;
+  }
+  .card {
+    aspect-ratio: 3 / 5;
+    height: auto;
+    width: auto;
+    padding: 16px 16px 0;
+  }
+  .title {
+    font-size: 17px;
+  }
+  .text {
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .number {
+    font-size: 34px;
+  }
+  .iconBubble {
+    width: 46px;
+    height: 46px;
+  }
+  .iconBubble svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+/* ---------- Только узкие ноутбуки (около 1024): карусель ---------- */
+/* Пять колонок на этой ширине дают ~170px на карточку — картинка и текст
+   перестают читаться. Здесь карточки крупные и листаются горизонтально.
+   На 1440 и выше остаётся сетка из пяти карточек в один ряд. */
+@media (min-width: 981px) and (max-width: 1100px) {
+  .row {
+    display: flex;
+    grid-template-columns: unset;
+    aspect-ratio: auto;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 8px 8px 28px;
+    margin-left: -8px;
+    margin-right: -8px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+  .row::-webkit-scrollbar {
+    height: 6px;
+  }
+  .row::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255);
+    border-radius: 999px;
+  }
+  .card {
+    flex: 0 0 auto;
+    width: 320px;
+    aspect-ratio: 320 / 420;
+    height: auto;
+    padding: 20px 20px 0;
+    scroll-snap-align: start;
+  }
+}

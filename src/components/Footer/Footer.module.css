@@ -1,0 +1,101 @@
+.footer {
+  background: linear-gradient(76.7deg, #505050 0%, #252525 100%);
+  padding: clamp(50px, 8vw, 80px) 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(32px, 5vw, 80px);
+}
+
+.brandCol {
+  flex: 714 1 280px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo {
+  height: 22px;
+  width: auto;
+  color: var(--white);
+  --logo-badge-fg: #111111;
+}
+
+.desc {
+  margin-top: 24px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 480px;
+}
+
+.social {
+  display: flex;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  transition: background 0.2s ease, transform 0.2s ease;
+  box-shadow: inset 3px 3px 3px rgba(255, 255, 255, 0.25), inset -3px -3px 3px rgba(255, 255, 255, 0.10);
+}
+
+.socialIcon:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.navCol {
+  flex: 1 1 210px;
+  min-width: 0;
+}
+
+.colTitle {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 28px;
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.linkList a,
+.linkList span {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.linkList a:hover {
+  color: var(--white);
+}
+
+@media (max-width: 860px) {
+  .brandCol {
+    flex-basis: 100%;
+  }
+}

@@ -1,0 +1,137 @@
+.section {
+  background: var(--bg-light);
+  padding: clamp(50px, 8vw, 80px) 0;
+}
+
+.empty {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(17, 17, 17, 0.6);
+  padding: 60px 0;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.imgWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 507 / 289;
+}
+
+.imgWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.categoryBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--gray-700);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.15;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.desc {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: rgba(17, 17, 17, 0.7);
+  height: 58px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.tag {
+  background: rgba(252, 128, 3, 0.1);
+  color: rgba(252, 128, 3, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+}
+
+.viewBtn {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(-39.1deg, #111111 0%, #4d4d4d 100%);
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 500;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.tagMore {
+  opacity: 0.7;
+  font-weight: 600;
+}
+
+.viewBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  /* Радиус карточки 60px при внутреннем отступе 20px — вложенной кнопке
+     для соосных углов нужен радиус 40px, иначе углы не совпадают. */
+  .viewBtn {
+    border-radius: var(--radius-xl);
+  }
+}

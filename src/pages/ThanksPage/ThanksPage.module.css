@@ -1,0 +1,47 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero {
+  width: 100%;
+  padding: 120px 0;
+}
+
+.card {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 48px;
+  border-radius: 32px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.text {
+  opacity: 0.8;
+  margin-bottom: 16px;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.button {
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}

@@ -1,0 +1,261 @@
+.section {
+  background: var(--bg-light);
+  padding: clamp(50px, 8vw, 80px) 0;
+}
+
+.empty {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(17, 17, 17, 0.6);
+  padding: 40px 0 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(-46.4deg, #121213 0%, #505459 100%);
+  border-radius: var(--radius-3xl);
+  padding: clamp(24px, 3vw, 30px) clamp(24px, 4vw, 50px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.headRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.jobTitle {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.locationBadge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: var(--radius-xl);
+  white-space: nowrap;
+}
+
+.jobDesc {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 748px;
+}
+
+.salary {
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.reqRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.reqList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reqLabel {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.reqPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 994px;
+}
+
+.reqPill {
+  background: linear-gradient(-32.9deg, #7d7d7d 0%, #404040 100%);
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: var(--radius-xl);
+  white-space: nowrap;
+}
+
+.applyBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--bg-light);
+  color: var(--gray-700);
+  font-size: 24px;
+  font-weight: 500;
+  padding: 20px 30px;
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.applyBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.97);
+}
+
+/* ---------- CTA card ---------- */
+.ctaCard {
+  margin-top: 40px;
+  background: var(--white);
+  border-radius: var(--radius-3xl);
+  padding: clamp(30px, 5vw, 60px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.ctaHead {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ctaTitle {
+  font-size: clamp(26px, 3.4vw, 40px);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ctaSubtitle {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(17, 17, 17, 0.7);
+  max-width: 995px;
+}
+
+.ctaDesc {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: rgba(17, 17, 17, 0.8);
+  max-width: 732px;
+}
+
+.ctaBtn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(-46.4deg, #121213 0%, #505459 100%);
+  color: var(--white);
+  font-size: 24px;
+  font-weight: 500;
+  padding: 18px 30px;
+  border-radius: var(--radius-md);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.ctaBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+@media (max-width: 720px) {
+  .card {
+    border-radius: var(--radius-lg);
+  }
+
+  .ctaCard {
+    border-radius: var(--radius-lg);
+  }
+
+  .reqRow {
+    align-items: flex-start;
+  }
+
+  .applyBtn {
+    width: 100%;
+    font-size: 18px;
+    padding: 16px 24px;
+    /* Карточка скруглена на 60px при отступе 20px — вложенной кнопке
+       для соосных углов нужно 40px. */
+    border-radius: var(--radius-xl);
+  }
+
+  .reqPill {
+    white-space: normal;
+    text-align: left;
+  }
+
+  .jobTitle {
+    font-size: 24px;
+  }
+
+  .jobDesc,
+  .reqPill,
+  .locationBadge {
+    font-size: 16px;
+  }
+
+  .salary {
+    font-size: 18px;
+  }
+}
+
+
+/* ---------- Планшет: компактнее карточки вакансий ---------- */
+@media (min-width: 700px) and (max-width: 980px) {
+  .card {
+    border-radius: var(--radius-xl);
+    padding: 28px;
+  }
+
+  .jobTitle {
+    font-size: 24px;
+  }
+
+  .jobDesc {
+    font-size: 16px;
+  }
+
+  .salary {
+    font-size: 18px;
+  }
+
+  .reqPill,
+  .locationBadge {
+    font-size: 14px;
+  }
+
+  .applyBtn {
+    font-size: 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .ctaCard {
+    border-radius: var(--radius-xl);
+  }
+}

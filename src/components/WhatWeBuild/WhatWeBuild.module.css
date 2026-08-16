@@ -1,0 +1,843 @@
+.section {
+  background: var(--bg-dark);
+  padding: clamp(60px, 8vw, 100px) 0;
+  color: var(--white);
+}
+
+.topRow {
+  display: flex;
+  gap: 20px;
+  margin-top: 60px;
+  align-items: stretch;
+}
+
+/* Left half: two 850x300 cards stacked. Right half: two 415x620 cards
+   side by side. Both halves are exactly equal width (850 = 850 in the
+   source), so equal flex-grow is correct here. */
+.leftCol {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rightCol {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.cardShort {
+  flex: 1;
+  aspect-ratio: 850 / 300;
+}
+
+.cardNarrowTall {
+  flex: 1;
+  min-width: 0;
+  gap: 14px;
+}
+
+.cardNarrowTall .priceBtn {
+  margin-top: 0;
+}
+
+.bottomRow {
+  display: grid;
+  grid-template-columns: 1285fr 415fr;
+  gap: 20px;
+  margin-top: 20px;
+  aspect-ratio: 1720 / 300;
+}
+
+.bottomWide {
+  min-width: 0;
+}
+
+.bottomNarrow {
+  min-width: 0;
+}
+
+/* ---------- generic card shell ---------- */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  padding: 40px 50px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 0;
+  transition: transform 0.35s ease;
+}
+
+.card:hover {
+  transform: scale(1.015);
+}
+
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  background: radial-gradient(
+    360px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.16),
+    transparent 70%
+  );
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover .cardGlow {
+  opacity: 1;
+}
+
+.cardHeadRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cardTitleDark,
+.cardTitleLight {
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 600;
+  max-width: 70%;
+}
+
+.cardTitleDark {
+  color: var(--gray-700);
+}
+
+.narrowTitle2Line {
+  position: relative;
+  z-index: 2;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--white);
+  max-width: 220px;
+}
+
+.narrowTitle1Line {
+  position: relative;
+  z-index: 2;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.narrowCardText {
+  position: relative;
+  z-index: 2;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 300px;
+}
+
+.cardTitleLight {
+  color: var(--white);
+}
+
+.cardTextDark,
+.cardTextLight {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.1;
+  max-width: 480px;
+  position: relative;
+  z-index: 2;
+}
+
+.storeCardText {
+  max-width: 420px;
+}
+
+.cardTextDark {
+  color: var(--gray-700);
+}
+
+.cardTextLight {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cardLight {
+  background: var(--bg-light);
+}
+
+.cardPurple {
+  background: var(--purple);
+}
+
+.cardDarkGradient {
+  background: var(--gradient-hero-card);
+}
+
+.cardBlue {
+  background: var(--gradient-blue);
+}
+
+.cardSlate {
+  background: var(--gray-250);
+}
+
+.cardGlassDark {
+  background: rgba(248, 248, 248, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 40px 30px 30px;
+}
+
+/* ---------- soft tinted badges ---------- */
+.softBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(5px);
+  transform: translateX(30px) translateY(-20px);
+}
+
+.badgeOrange {
+  background: rgba(252, 128, 3, 0.1);
+  color: rgba(252, 128, 3, 0.8);
+}
+
+.badgeWhite {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.badgeDark {
+  background: rgba(17, 17, 17, 0.1);
+  color: rgba(17, 17, 17, 0.7);
+}
+
+/* ---------- price CTA button ---------- */
+.priceBtn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  padding: 18px 25px;
+  border-radius: var(--radius-xl);
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: auto;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.priceBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.tone-orange {
+  background: var(--gradient-orange);
+  color: var(--bg-light);
+}
+
+.tone-white-orange {
+  background: var(--white);
+}
+.tone-white-orange span {
+  background: var(--gradient-orange);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.tone-white-orange svg {
+  color: var(--orange);
+}
+
+.tone-white-dark {
+  background: var(--white);
+  color: var(--text-primary);
+}
+
+.tone-white-blue {
+  background: var(--white);
+  color: var(--blue-2);
+}
+
+.tone-dark {
+  background: var(--gray-950);
+  color: var(--white);
+}
+
+/* ---------- Landing-page card art ---------- */
+.landingArt {
+  position: absolute;
+  left: 50.2%;
+  top: 14.7%;
+  width: 75.3%;
+  height: 134.3%;
+  z-index: 1;
+}
+
+.landingArt img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.landingGlow {
+  position: absolute;
+  left: 55.2%;
+  top: 77.1%;
+  width: 47.8%;
+  height: 56.1%;
+  background: #252525;
+  opacity: 0.6;
+  filter: blur(60px);
+  border-radius: 50%;
+}
+
+/* ---------- Store card art (stacked product cards) ---------- */
+.storeArt {
+  position: absolute;
+  left: 61.9%;
+  /* Стопка айфонов упирается в самый низ карточки. */
+  top: auto;
+  bottom: 0;
+  width: 38.1%;
+  height: 74.3%;
+  z-index: 1;
+}
+
+.storeStackImg {
+  object-position: bottom center;
+  position: absolute;
+  inset: 0;
+  width: 140%;
+  height: 140%;
+  max-width: none;
+  object-fit: contain;
+  transform: translateX(-120px) translateY(-83px);
+}
+
+/* ---------- Web-services icon-bubble collage (static SVG) ---------- */
+.bubbleField {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 54.2%;
+  height: 45.8%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.webservicesImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* ---------- Telegram pills (static SVG) ---------- */
+.marquee {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 62.6%;
+  height: 31%;
+  z-index: 1;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.telegramImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Mobile / desktop apps card art ---------- */
+.laptopArt {
+  position: absolute;
+  left: 47.5%;
+  top: 42%;
+  width: 52.5%;
+  height: 73.0%;
+  z-index: 1;
+  overflow: visible;
+}
+
+.laptopArt img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 120%;
+  height: 120%;
+  max-width: none;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  object-fit: contain;
+}
+
+.laptopGlow {
+  position: absolute;
+  left: 0%;
+  top: 60.5%;
+  width: 100.4%;
+  height: 120.9%;
+  transform: rotate(-10.5deg);
+  transform-origin: top left;
+  background: #aaadb5;
+  filter: blur(55px);
+  opacity: 0.7;
+  border-radius: 50%;
+}
+
+/* ---------- One-step CTA card ---------- */
+.oneStepInner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.oneStepTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.oneStepBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: stretch;
+  min-width: 0;
+  background: var(--gray-950);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 18px 14px;
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+  text-align: center;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.oneStepBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  /* Бейдж («Популярно», «Выгодно» и т.д.) уходит под заголовок карточки
+     и прижимается к левому краю, а не стоит справа от него в одну строку. */
+  .cardHeadRow {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  /* На десктопе у бейджа есть декоративное смещение (translateX(30px)),
+     из-за которого под заголовком он не вставал вровень по левому краю. */
+  .softBadge {
+    transform: none;
+  }
+  .topRow,
+  .rightCol {
+    flex-direction: column;
+  }
+  .bottomRow {
+    grid-template-columns: 1fr;
+    aspect-ratio: auto;
+  }
+  .cardShort {
+    aspect-ratio: auto;
+  }
+  .cardTitleDark,
+  .cardTitleLight {
+    max-width: 100%;
+  }
+  /* Картинки прижаты к низу карточки отдельным слоем и занимают всю
+     ширину — раньше они шли в общем потоке после кнопки (отсюда «кривой»
+     вид) и вдобавок снизу оставался пустой отступ, из-за чего карточки
+     были примерно на 550px длиннее необходимого. */
+  .landingArt,
+  .storeArt,
+  .laptopArt,
+  .bubbleField,
+  .marquee {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    height: 280px;
+    margin-top: 0;
+    overflow: hidden;
+  }
+  .landingArt img,
+  .laptopArt img,
+  .storeStackImg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    transform: none;
+  }
+  /* Ноутбук в «Лендингах» смещён к правому краю карточки. */
+  .landingArt img,
+  .laptopArt img {
+    object-position: bottom right;
+  }
+  /* Айфоны — вплотную к нижнему краю, чуть крупнее для баланса. */
+  .storeArt {
+    height: 210px;
+  }
+  .storeStackImg {
+    object-position: bottom center;
+    transform: scale(1.08);
+    transform-origin: bottom center;
+  }
+  .card {
+    min-height: 0;
+  }
+  .cardShort,
+  .cardNarrowTall,
+  .bottomWide {
+    min-height: 0;
+    padding-bottom: 300px;
+  }
+  .telegramImg,
+  .webservicesImg {
+    object-fit: contain;
+    object-position: bottom center;
+  }
+}
+
+/* ---------- Планшеты: декор заполняет низ и бока карточки ---------- */
+/* На планшете колонки уже, чем на десктопе, и декоративные области
+   («Веб сервисы», «Telegram-боты») выглядели мелкими и обрезанными —
+   растягиваем их на всю ширину карточки до самого низа. */
+@media (min-width: 981px) and (max-width: 1400px) {
+  .bubbleField,
+  .marquee {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 52%;
+  }
+  .webservicesImg,
+  .telegramImg {
+    object-fit: cover;
+    object-position: center bottom;
+    transform: scale(1.12);
+    transform-origin: center bottom;
+  }
+}
+
+/* ---------- Ноутбуки: карточки растут под содержимое ---------- */
+/* На 13-15" ширина колонки меньше, чем на десктопе, и жёсткая пропорция
+   (aspect-ratio 850/300) давала всего ~200px высоты — цена и кнопка
+   уходили за нижний край и обрезались. Здесь пропорция заменена на
+   минимальную высоту, а типографика немного компактнее. */
+@media (min-width: 981px) and (max-width: 1700px) {
+  /* Раскладка та же, что на десктопе (две широкие карточки слева, две
+     узкие справа, широкая + компактная внизу) — меняются только размеры:
+     карточки чуть выше, типографика и картинки подогнаны под меньшую
+     ширину колонок, чтобы текст не сталкивался с изображением. */
+  .cardShort {
+    aspect-ratio: auto;
+    min-height: 260px;
+  }
+  /* Пропорция 1285:415 оставляла карточке «Остался один шаг» всего ~166px
+     под кнопку, и текст в неё не помещался. Даём этой колонке больше места. */
+  .bottomRow {
+    aspect-ratio: auto;
+    grid-template-columns: 1.7fr 1fr;
+  }
+  .bottomWide,
+  .bottomNarrow {
+    min-height: 260px;
+  }
+  .card {
+    padding: 26px 30px 30px;
+    gap: 12px;
+  }
+  .cardTitleDark,
+  .cardTitleLight {
+    font-size: clamp(19px, 1.6vw, 24px);
+    max-width: 58%;
+  }
+  .narrowTitle1Line,
+  .narrowTitle2Line {
+    font-size: clamp(17px, 1.4vw, 21px);
+  }
+  .cardTextDark,
+  .cardTextLight {
+    font-size: 14px;
+    max-width: 56%;
+  }
+  .narrowCardText {
+    font-size: 13px;
+  }
+  .priceBtn {
+    font-size: 15px;
+    padding: 11px 18px;
+  }
+  .oneStepTitle {
+    font-size: 20px;
+  }
+  .oneStepBtn {
+    font-size: 14px;
+    padding: 11px 16px;
+  }
+  /* Бейдж не должен вылезать за верхнюю границу карточки: у него есть
+     декоративное смещение translateX(30px) translateY(-20px), из-за
+     которого он поднимался над краем на 6-15px. */
+  .softBadge {
+    font-size: 13px;
+    padding: 7px 14px;
+    transform: none;
+  }
+  /* Цены не должны переноситься на вторую строку. */
+  .priceBtn {
+    white-space: nowrap;
+  }
+  .priceBtn span {
+    white-space: nowrap;
+  }
+  /* Картинки лежат справа, как в оригинале, но компактнее — чтобы
+     оставить текстовой колонке достаточно места. Ноутбук вписан целиком
+     и слегка отодвинут от правого края, иначе он упирался в границу
+     карточки и обрезался. */
+  .landingArt {
+    width: 52%;
+    left: auto;
+    right: -4%;
+    top: auto;
+    bottom: 0;
+    height: 78%;
+  }
+  .landingArt img {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right bottom;
+    transform: none;
+  }
+  .storeArt {
+    width: 34%;
+    left: auto;
+    right: 2%;
+    top: auto;
+    bottom: 0;
+    height: 88%;
+  }
+  .storeStackImg {
+    object-fit: contain;
+    object-position: bottom center;
+  }
+  /* Клавиатура выходила за нижний край карточки на 110-120px — вписываем
+     её целиком, прижав к низу. */
+  .laptopArt {
+    width: 46%;
+    left: auto;
+    right: -2%;
+    top: auto;
+    bottom: 0;
+    height: 82%;
+  }
+  .laptopArt img {
+    /* inset:0 обязателен: в базовом стиле у картинки top/left 50%,
+       которые компенсировались трансформацией. Убрав transform, но не
+       сбросив позицию, картинка съезжала вниз ровно на половину высоты. */
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right bottom;
+    transform: none;
+  }
+  /* Иконки в «Веб-сервисах» обрезались краями — уменьшаем поле. */
+  .bubbleField {
+    top: auto;
+    bottom: 0;
+    height: 44%;
+  }
+  .webservicesImg {
+    object-fit: contain;
+    object-position: center bottom;
+  }
+  /* «Остался один шаг»: текст и кнопка компактнее, чтобы помещались. */
+  .oneStepInner {
+    gap: 8px;
+  }
+  .cardGlassDark .cardTextLight {
+    font-size: 13px;
+    max-width: 100%;
+  }
+  /* Кнопка крупнее и на всю ширину карточки — текст помещался впритык
+     (154px текста в кнопке шириной 160px) и упирался в края. */
+  .oneStepBtn {
+    white-space: nowrap;
+    font-size: 15px;
+    padding: 14px 20px;
+    width: 100%;
+    justify-content: center;
+  }
+  .bubbleField,
+  .marquee {
+    left: 0;
+    right: 0;
+  }
+}
+
+/* ---------- Планшет: узкие карточки остаются в паре ---------- */
+/* На планшете правая колонка складывалась в столбец, и «Веб сервисы» с
+   «Telegram-боты» вытягивались в непропорционально высокие блоки.
+   Здесь они снова стоят рядом друг с другом. */
+@media (min-width: 700px) and (max-width: 980px) {
+  /* «Лендинги» и «Интернет-магазины» тоже идут парой — так же, как
+     «Веб-сервисы» и «Telegram-боты». */
+  .leftCol,
+  .rightCol {
+    flex-direction: row;
+  }
+  .cardShort {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 560px;
+    padding-bottom: 250px;
+    aspect-ratio: auto;
+  }
+  /* Картинка занимает низ карточки на всю ширину и не наезжает на текст. */
+  .cardShort .landingArt,
+  .cardShort .storeArt {
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    width: auto;
+    height: 240px;
+  }
+  .cardShort .landingArt img,
+  .cardShort .storeStackImg {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    transform: none;
+  }
+  .cardShort .cardTitleDark,
+  .cardShort .cardTitleLight,
+  .cardShort .cardTextDark,
+  .cardShort .cardTextLight {
+    max-width: 100%;
+    font-size: 15px;
+  }
+  .cardShort .cardTitleDark,
+  .cardShort .cardTitleLight {
+    font-size: 21px;
+  }
+  /* «Мобильные и десктоп-приложения» — карточка ниже. */
+  .bottomWide {
+    min-height: 0;
+    padding-bottom: 180px;
+  }
+  .bottomWide .laptopArt {
+    height: 170px;
+  }
+  .cardNarrowTall {
+    flex: 1 1 0;
+    min-width: 0;
+    /* Карточки выше, чтобы декоративная картинка помещалась целиком
+       (её пропорция 414x285 — при высоте области 190px и object-fit:
+       cover края обрезались). */
+    min-height: 560px;
+    padding-bottom: 250px;
+  }
+  /* Декор должен касаться левой и правой стенок карточки: у карточки есть
+     горизонтальные внутренние отступы, поэтому гасим их отрицательными
+     полями, а картинку растягиваем по всей ширине. */
+  .cardNarrowTall .bubbleField,
+  .cardNarrowTall .marquee {
+    height: 240px;
+    left: 0;
+    right: 0;
+    width: auto;
+  }
+  .cardNarrowTall .webservicesImg,
+  .cardNarrowTall .telegramImg {
+    width: 100%;
+    height: 100%;
+    /* contain вместо cover — картинка видна целиком, без обрезки краёв. */
+    object-fit: contain;
+    object-position: center bottom;
+  }
+  /* Айфоны крупнее — так карточка смотрится уравновешеннее. */
+  .storeArt {
+    height: 280px;
+  }
+  .storeStackImg {
+    object-fit: contain;
+    object-position: bottom center;
+    transform: scale(1.18);
+    transform-origin: bottom center;
+  }
+  .narrowTitle1Line,
+  .narrowTitle2Line {
+    font-size: 22px;
+  }
+  .cardNarrowTall .narrowCardText {
+    font-size: 15px;
+  }
+}
+
+
+/* ---------- Только Laptop 1024: айфоны крупнее ---------- */
+/* Стопка остаётся у нижнего края и по-прежнему слегка выходит за
+   карточку, но становится заметно крупнее. */
+@media (min-width: 981px) and (max-width: 1100px) {
+  .storeArt {
+    width: 42%;
+    right: -2%;
+    height: 96%;
+  }
+  .storeStackImg {
+    object-fit: contain;
+    object-position: bottom center;
+    transform: scale(1.16);
+    transform-origin: bottom center;
+  }
+}

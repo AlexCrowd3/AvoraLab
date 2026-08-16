@@ -1,0 +1,257 @@
+.section {
+  background: var(--bg-dark);
+  padding: clamp(60px, 8vw, 100px) 0;
+}
+
+.row {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1285fr 415fr;
+  gap: 20px;
+  aspect-ratio: 1720 / 520;
+}
+
+.mainCard {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--gradient-light-panel);
+  border-radius: var(--radius-2xl);
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.35s ease;
+}
+
+.mainCard:hover {
+  transform: scale(1.015);
+}
+
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  background: radial-gradient(
+    360px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.2),
+    transparent 70%
+  );
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+:is(.mainCard, .sideCard):hover .cardGlow {
+  opacity: 1;
+}
+
+.mainGlow {
+  position: absolute;
+  right: -10%;
+  top: 10%;
+  width: 55%;
+  height: 90%;
+  background: #d9d9d9;
+  filter: blur(60px);
+  border-radius: 50%;
+}
+
+.mainText {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 520px;
+}
+
+.mainTitle {
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.mainDesc {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+  line-height: 1.1;
+  color: rgba(50, 50, 50, 0.8);
+}
+
+.mainBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gradient-orange);
+  color: var(--bg-light);
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20px 30px;
+  border-radius: var(--radius-xl);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.mainBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 524px;
+}
+
+.tag {
+  background: rgba(252, 128, 3, 0.2);
+  color: var(--orange);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 15px 20px;
+  border-radius: var(--radius-lg);
+  white-space: nowrap;
+}
+
+.mainImg {
+  position: absolute;
+  left: 37.7%;
+  top: 39.2%;
+  width: 71%;
+  height: 117.7%;
+  max-width: none;
+  object-fit: cover;
+  transform: rotate(-15deg);
+  transform-origin: top left;
+  border-radius: var(--radius-lg);
+  z-index: 0;
+}
+
+.sideCol {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sideCard {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+  border-radius: var(--radius-2xl);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 20px;
+  transition: transform 0.35s ease;
+}
+
+.sideCard:hover {
+  transform: scale(1.02);
+}
+
+.sideCardPurple {
+  background: var(--gradient-purple);
+}
+
+.sideCardTeal {
+  background: var(--gradient-teal);
+}
+
+.sideHead {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--white);
+  /* Заголовок переносится по словам, а не вылезает за карточку. */
+  min-width: 0;
+}
+
+.sideHead > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.sideTitle {
+  position: relative;
+  z-index: 3;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.sideTitleNowrap {
+  position: relative;
+  z-index: 3;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.sideDesc {
+  position: relative;
+  z-index: 3;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 335px;
+}
+
+.sideLink {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.sideLinkArrow {
+  transition: transform 0.25s ease;
+}
+
+.sideLink:hover .sideLinkArrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 1100px) {
+  .row {
+    grid-template-columns: 1fr;
+    aspect-ratio: auto;
+  }
+  .mainCard {
+    padding: 40px;
+  }
+  .mainImg {
+    position: relative;
+    inset: auto;
+    left: auto;
+    top: auto;
+    /* Крупнее: выходим за внутренние отступы карточки на всю её ширину
+       и даём картинке больше высоты. */
+    width: calc(100% + 80px);
+    margin-left: -40px;
+    margin-right: -40px;
+    height: auto;
+    aspect-ratio: 912 / 700;
+    object-fit: cover;
+    transform: none;
+    margin-top: 24px;
+  }
+  .mainCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sideCol {
+    min-width: 0;
+  }
+}

@@ -1,0 +1,213 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-dark);
+  padding: clamp(60px, 10vw, 100px) 0;
+  display: flex;
+  align-items: center;
+  min-height: clamp(280px, 21.8vw, 418px);
+}
+
+.heroBg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 51.6%;
+  height: 100%;
+}
+
+.heroBg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroBg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--bg-dark) 0%, transparent 35%);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 740px;
+}
+
+.title {
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.titleGlass {
+  display: inline-block;
+  padding: 12px 28px;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 700px;
+}
+
+/* ---------- Search + filters ---------- */
+.searchSection {
+  background: var(--bg-light);
+  padding: clamp(40px, 8vw, 80px) 0;
+}
+
+.searchWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.searchRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+
+.searchInput {
+  flex: 1 1 500px;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 12px 20px;
+  color: rgba(17, 17, 17, 0.4);
+}
+
+.searchInput input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.searchInput input::placeholder {
+  color: rgba(17, 17, 17, 0.4);
+}
+
+.clearInput {
+  display: flex;
+  border: none;
+  background: rgba(17, 17, 17, 0.08);
+  color: rgba(17, 17, 17, 0.6);
+  border-radius: 50%;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.filtersBtn,
+.clearFiltersBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 13px 20px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.filtersBtn {
+  background: var(--white);
+  color: rgba(50, 50, 50, 0.8);
+  box-shadow: var(--shadow-soft);
+}
+
+.filtersBtnActive {
+  background: rgba(50, 50, 50, 0.8);
+  color: var(--white);
+}
+
+.clearFiltersBtn {
+  background: rgba(17, 17, 17, 0.9);
+  color: #f8f8f8;
+}
+
+.filtersBtn:hover,
+.clearFiltersBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.filtersPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.filtersLabel {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(50, 50, 50, 0.8);
+}
+
+.filtersPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 350px;
+}
+
+.filterPill {
+  border: none;
+  background: var(--white);
+  color: rgba(50, 50, 50, 0.6);
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+  transition: transform 0.15s ease;
+}
+
+.filterPill:hover {
+  transform: translateY(-1px);
+}
+
+.filterPillActive {
+  background: var(--gradient-orange);
+  color: var(--white);
+}
+
+@media (max-width: 640px) {
+  .heroBg {
+    width: 100%;
+    opacity: 0.3;
+  }
+  .heroBg::after {
+    background: linear-gradient(180deg, var(--bg-dark) 40%, transparent 100%);
+  }
+}
