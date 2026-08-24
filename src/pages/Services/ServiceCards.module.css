@@ -290,13 +290,12 @@
     padding: 28px;
   }
 
-  /* Бейдж поднимается выше верхнего края карточки — так он не налезает
-     на заголовок и текст внутри неё. */
   .badge {
-    top: 34px;
-    right: 20px;
+    top: 5px;
+    right: 10px;
     font-size: 14px;
     padding: 8px 16px;
+    backdrop-filter: blur(10px);
   }
 
   /* Место сверху под приподнятый бейдж. */
@@ -453,9 +452,6 @@
 
 @media (max-width: 520px) {
 
-  /* Long feature pills (e.g. the Express-development card's bullets) would
-     otherwise get cut off at the screen edge since pills default to
-     nowrap — let them wrap onto a second line instead of hiding text. */
   .featurePill {
     white-space: normal;
     text-align: left;
@@ -482,6 +478,10 @@
    они не давали картинкам дойти до нижнего края (оставляли полосу 6-13px)
    и, находясь ниже по файлу, перебивали правила основного мобильного блока. */
 @media (max-width: 980px) {
+  .cardWrap {
+    margin-bottom: 24px;
+  }
+
   .expressImg {
     right: auto;
     left: 50%;
@@ -622,6 +622,7 @@
     top: auto !important;
     margin-bottom: 20px;
   }
+
   /* На телефоне карточки показываются статично: без «прилипания» и без
      каких-либо переходов/трансформаций при прокрутке. */
   .cardWrap,
@@ -635,6 +636,7 @@
     animation: none !important;
     will-change: auto;
   }
+
   .card:hover,
   .cardCta:hover {
     transform: none;
@@ -650,38 +652,48 @@
     position: sticky;
     margin-bottom: 0;
   }
+
   .card {
     min-height: 0;
   }
+
   .content {
     padding: 22px 24px;
     gap: 10px;
   }
+
   .title {
     font-size: 22px;
   }
+
   .desc {
     font-size: 15px;
   }
+
   .featuresLabel {
     font-size: 15px;
   }
+
   .featurePill {
     font-size: 14px;
     padding: 8px 14px;
   }
+
   .priceText {
     font-size: 16px;
   }
+
   .durationBtn {
     font-size: 15px;
     padding: 11px 18px;
   }
+
   /* Картинки крупнее: прежние 200px перебивали значение выше и делали
      изображение мелким (занимало всего 42% ширины карточки). */
   .visual {
     height: 340px;
   }
+
   .cardCta {
     position: sticky;
     height: auto;
@@ -700,6 +712,7 @@
     align-items: flex-end;
     justify-content: flex-end;
   }
+
   .visualImg,
   .storeVisualImg {
     width: 100%;
@@ -709,6 +722,7 @@
     object-position: right bottom;
     margin: auto 0 0 auto;
   }
+
   .content {
     flex: 1.4;
   }
@@ -724,6 +738,7 @@
     right: 22px;
     transform: none;
   }
+
   .cardWrap {
     padding-top: 0;
   }
@@ -737,34 +752,43 @@
     padding: 20px;
     gap: 10px;
   }
+
   .title {
     font-size: 19px;
   }
+
   .desc {
     font-size: 13px;
     line-height: 1.35;
   }
+
   .featuresLabel {
     font-size: 13px;
   }
+
   .featurePill {
     font-size: 12px;
     padding: 7px 12px;
   }
+
   .featuresList {
     gap: 6px;
   }
+
   .priceText {
     font-size: 14px;
   }
+
   .durationBtn {
     font-size: 14px;
     padding: 10px 16px;
   }
+
   .badge {
     font-size: 12px;
     padding: 6px 12px;
   }
+
   .visual {
     height: 210px;
     /* Картинки прижаты к правому нижнему углу карточки. */
@@ -772,6 +796,7 @@
     justify-content: flex-end;
     overflow: hidden;
   }
+
   .visualImg,
   .storeVisualImg {
     width: auto;
@@ -782,6 +807,7 @@
     margin: 0 0 0 auto;
     align-self: flex-end;
   }
+
   /* Ноутбук с часами: целиком в карточке, ниже текста, без обрезки. */
   .expressImg {
     position: static;
@@ -797,6 +823,7 @@
     margin: 0 0 0 auto;
     transform: rotate(180deg);
   }
+
   /* Скругление меньше — текст у углов больше не выглядит зажатым. */
   .card,
   .cardCta {

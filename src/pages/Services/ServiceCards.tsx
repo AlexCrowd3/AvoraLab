@@ -1,6 +1,6 @@
 import type { CSSVars } from '../../types'
 import type { MouseEvent } from 'react'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, BookOpen } from 'lucide-react'
 import landingPreview from '../../assets/serviceCards/landing.png'
@@ -18,6 +18,19 @@ function handleCtaGlowMove(e: MouseEvent<HTMLElement>) {
   const rect = card.getBoundingClientRect()
   card.style.setProperty('--mx', `${((e.clientX - rect.left) / rect.width) * 100}%`)
   card.style.setProperty('--my', `${((e.clientY - rect.top) / rect.height) * 100}%`)
+}
+
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < breakpoint)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [breakpoint])
+
+  return isMobile
 }
 
 function Features({ items }: { items: string[] }) {
@@ -202,6 +215,7 @@ const SERVICES = [
 
 export default function ServiceCards() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const isMobile = useIsMobile(768) // < 768px = мобилка
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -215,10 +229,11 @@ export default function ServiceCards() {
         const start = i / total
         const end = (i + 1) / total
 
+        // Эти трансформации будут работать только на десктопе
         const scale = useTransform(
           scrollYProgress,
           [0, start, end, 1],
-          [1, 1, 0.7, 0.7]     
+          [1, 1, 0.7, 0.7]
         )
 
         const opacity = useTransform(
@@ -234,8 +249,13 @@ export default function ServiceCards() {
             style={{
               top: `${100 + i}px`,
               zIndex: i + 1,
-              scale,
-              opacity,
+              // На мобилке не применяем scale и opacity
+              ...(isMobile
+                ? {}
+                : {
+                  scale,
+                  opacity,
+                }),
             }}
           >
             <article
