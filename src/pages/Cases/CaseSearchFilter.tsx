@@ -1,9 +1,11 @@
 import type { CSSVars } from '../../types'
 import { useEffect, useState } from 'react'
 import { Search, SlidersHorizontal, X } from 'lucide-react'
+import { CASES } from '../../data/cases'
 import styles from './CaseSearchFilter.module.css'
 
-const PROJECT_TYPES = [
+// Порядок типов в фильтре, чтобы он не зависел от порядка кейсов в данных.
+const TYPE_ORDER = [
   'Лендинг',
   'Мобильное приложение',
   'Десктоп приложение',
@@ -11,6 +13,15 @@ const PROJECT_TYPES = [
   'Telegram-бот',
   'Интернет магазин',
 ]
+
+// Показываем только те типы, по которым реально есть кейсы: иначе часть
+// чекбоксов всегда приводила бы к пустому результату.
+const PROJECT_TYPES = (() => {
+  const present = new Set(CASES.map((c) => c.category))
+  const known = TYPE_ORDER.filter((t) => present.has(t))
+  const custom = [...present].filter((t) => !TYPE_ORDER.includes(t))
+  return [...known, ...custom]
+})()
 
 const PRICE_MIN = 7000
 const PRICE_MAX = 150000

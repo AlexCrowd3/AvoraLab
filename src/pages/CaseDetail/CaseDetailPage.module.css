@@ -76,17 +76,22 @@
   opacity: 0.9;
 }
 
+/* Пропорция задаётся заранее и меняется вместе с картинкой в <picture>,
+   поэтому при загрузке страницы блок не «прыгает». */
 .heroCard {
   display: block;
   border-radius: var(--radius-3xl);
   overflow: hidden;
   line-height: 0;
+  background: var(--bg-dark);
+  aspect-ratio: 2000 / 630;
 }
 
 .heroCardImg {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
 }
 
 .title {
@@ -362,6 +367,15 @@
   }
 }
 
+/* Ниже 1200px в <picture> подставляется компактная обложка 1105×630 —
+   пропорция карточки должна смениться вместе с ней. */
+@media (max-width: 1200px) {
+  .heroCard {
+    aspect-ratio: 1105 / 630;
+    border-radius: var(--radius-2xl);
+  }
+}
+
 @media (max-width: 1100px) {
   .heroTopBar {
     flex-direction: column;
@@ -457,6 +471,89 @@
   .ctaPrimary,
   .ctaSecondary {
     justify-content: center;
+  }
+}
+
+/* ---------- Телефон ---------- */
+@media (max-width: 560px) {
+  .heroSection {
+    padding-top: 20px;
+  }
+
+  .heroTopBar {
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .backPill {
+    height: 38px;
+    padding: 0 14px;
+    font-size: 15px;
+  }
+
+  .heroTitle {
+    font-size: 17px;
+    line-height: 1.25;
+  }
+
+  /* Таблетки узкие — разрешаем им переноситься по словам, иначе
+     «React Native + Figma» вылезает за край экрана. */
+  .heroMeta {
+    gap: 8px;
+  }
+
+  .metaPill {
+    height: auto;
+    min-height: 32px;
+    padding: 6px 12px;
+    font-size: 13px;
+    gap: 8px;
+    white-space: normal;
+  }
+
+  .metaPill svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .heroCard {
+    border-radius: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 21px;
+    margin-bottom: 18px;
+  }
+
+  .sectionTitle:not(:first-child) {
+    margin-top: 36px;
+  }
+
+  .infoCard {
+    padding: 24px 22px;
+    border-radius: 24px;
+  }
+
+  .blockTitle {
+    font-size: 19px;
+  }
+
+  .blockText {
+    font-size: 16px;
+  }
+
+  .techRow {
+    gap: 10px;
+  }
+
+  .techTag {
+    font-size: 15px;
+    padding: 12px 18px;
+    border-radius: var(--radius-md);
+  }
+
+  .ctaCard {
+    border-radius: 24px;
   }
 }
 

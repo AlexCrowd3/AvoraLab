@@ -15,8 +15,6 @@ import {
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import { CASES } from '../../data/cases'
-import caseHeroWide from '../../assets/images/case-hero-wide.webp'
-import caseHeroMobile from '../../assets/images/case-hero-mobile.webp'
 import ctaNotifCard from '../../assets/images/cta-notif-card.webp'
 import styles from './CaseDetailPage.module.css'
 
@@ -91,16 +89,26 @@ export default function CaseDetailPage() {
                 </span>
                 <span className={styles.metaPill}>
                   <LayoutGrid size={20} />
-                  <span>{caseItem.category}</span>
+                  <span>{caseItem.typeLabel ?? caseItem.category}</span>
                 </span>
               </div>
             </div>
 
-            {/* Картинка сама и есть карточка — на узких экранах
-                подставляется вертикальная версия. */}
+            {/* Картинка сама и есть карточка. Широкий баннер 2000×630
+                рассчитан на десктоп: ниже 1200px он ужимается настолько,
+                что текст на нём становится нечитаемым, поэтому там
+                подставляется компактная версия 1105×630 — та же, что
+                стоит на карточке в списке кейсов. */}
             <picture className={styles.heroCard}>
-              <source media="(max-width: 900px)" srcSet={caseHeroMobile} />
-              <img src={caseHeroWide} alt={caseItem.title} className={styles.heroCardImg} />
+              <source media="(max-width: 1200px)" srcSet={caseItem.img} width={1105} height={630} />
+              <img
+                src={caseItem.imgWide}
+                alt={caseItem.title}
+                className={styles.heroCardImg}
+                width={2000}
+                height={630}
+                decoding="async"
+              />
             </picture>
           </div>
         </section>
