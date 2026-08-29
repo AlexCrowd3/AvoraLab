@@ -34,7 +34,7 @@ export default function Footer() {
             и приносят прибыль. Под ключ, по договору, в срок.
           </p>
           <div className={styles.social}>
-            <a href="#" className={styles.socialIcon} aria-label="Telegram">
+            <a href="https://t.me/RAFF_LEMs" className={styles.socialIcon} aria-label="Telegram">
               <Send size={20} />
             </a>
             <a href="mailto:avora-lab@gmail.com" className={styles.socialIcon} aria-label="Email">
@@ -77,7 +77,7 @@ export default function Footer() {
           <h3 className={styles.colTitle}>Контакты</h3>
           <ul className={styles.linkList}>
             <li>
-              <a href="#">Telegram</a>
+              <a href="https://t.me/RAFF_LEMs">Telegram</a>
             </li>
             <li>
               <a href="mailto:avora-lab@gmail.com">avora-lab@gmail.com</a>
