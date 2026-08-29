@@ -58,6 +58,9 @@
   gap: 12px;
 }
 
+/* Названия кейсов длинные («Приложение для центра „Дети на планете“»),
+   поэтому две строки с фиксированной высотой: текст не обрезается на
+   полуслове, а карточки в ряду остаются одинаковыми. */
 .title {
   font-size: 20px;
   font-weight: 600;
@@ -65,8 +68,9 @@
   line-height: 1.15;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   overflow: hidden;
+  min-height: 46px;
 }
 
 .desc {
@@ -75,6 +79,10 @@
   line-height: 1.25;
   color: rgba(17, 17, 17, 0.7);
   height: 58px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .tags {
@@ -129,9 +137,40 @@
   .grid {
     grid-template-columns: 1fr;
   }
+
+  /* Карточка одна в ряду — выравнивать её не с чем, поэтому текст может
+     занимать столько строк, сколько нужно, и ничего не обрезается. */
+  .title,
+  .desc {
+    -webkit-line-clamp: unset;
+    display: block;
+    height: auto;
+    min-height: 0;
+  }
   /* Радиус карточки 60px при внутреннем отступе 20px — вложенной кнопке
      для соосных углов нужен радиус 40px, иначе углы не совпадают. */
   .viewBtn {
     border-radius: var(--radius-xl);
+  }
+}
+
+@media (max-width: 560px) {
+  /* «Мобильное приложение» на узкой обложке занимало больше половины
+     ширины — уменьшаем бейдж, чтобы он не перекрывал композицию. */
+  .categoryBadge {
+    top: 8px;
+    right: 8px;
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: 14px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .viewBtn {
+    font-size: 17px;
+    padding: 14px;
   }
 }
