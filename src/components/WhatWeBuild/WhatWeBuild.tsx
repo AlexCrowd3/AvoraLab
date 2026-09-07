@@ -92,14 +92,10 @@ export default function WhatWeBuild() {
                   Одностраничники, которые продают. Чистый дизайн, быстрая загрузка и акцент на
                   заявки.
                 </p>
-<<<<<<< HEAD
-                <PriceButton tone="orange">от 24 900 ₽</PriceButton>
-=======
                 <PriceButton tone="orange" to="/services/landing">
                   от 24 900 ₽
                 </PriceButton>
                 <CardLinkOverlay to="/services/landing" label="Лендинги и промо сайты" />
->>>>>>> d2810cf (Politik konfid)
                 <div className={styles.landingArt} aria-hidden="true">
                   <div className={styles.landingGlow} />
                   <img src={landingPreview} alt="" loading="lazy" />
@@ -124,14 +120,10 @@ export default function WhatWeBuild() {
                   Полноценные магазины с каталогом, корзиной, оплатой и личным кабинетом. Готовы к
                   запуску рекламы.
                 </p>
-<<<<<<< HEAD
-                <PriceButton tone="white-orange">От 49 900 ₽</PriceButton>
-=======
                 <PriceButton tone="white-orange" to="/services/online-store">
                   От 49 900 ₽
                 </PriceButton>
                 <CardLinkOverlay to="/services/online-store" label="Интернет-магазины" />
->>>>>>> d2810cf (Politik konfid)
                 <div className={styles.storeArt} aria-hidden="true">
                   <img src={iphoneStackNew} alt="" loading="lazy" className={styles.storeStackImg} />
                 </div>
@@ -154,14 +146,10 @@ export default function WhatWeBuild() {
                   Сложные продукты: личные кабинеты, платформы, автоматизация процессов. Под ваши
                   задачи.
                 </p>
-<<<<<<< HEAD
-                <PriceButton tone="white-dark">От 39 560 ₽</PriceButton>
-=======
                 <PriceButton tone="white-dark" to="/services/web-service">
                   От 39 560 ₽
                 </PriceButton>
                 <CardLinkOverlay to="/services/web-service" label="Веб-сервисы и личные кабинеты" />
->>>>>>> d2810cf (Politik konfid)
                 <div className={styles.bubbleField} aria-hidden="true">
                   <img
                     src={webservicesIcons}
@@ -187,14 +175,10 @@ export default function WhatWeBuild() {
                   Боты для продаж, поддержки, записи и автоматизации. От простых до сложных
                   сценариев с оплатой и CRM.
                 </p>
-<<<<<<< HEAD
-                <PriceButton tone="white-blue">От 7 990 ₽</PriceButton>
-=======
                 <PriceButton tone="white-blue" to="/services/telegram-bot">
                   От 7 990 ₽
                 </PriceButton>
                 <CardLinkOverlay to="/services/telegram-bot" label="Telegram-боты" />
->>>>>>> d2810cf (Politik konfid)
                 <div className={styles.marquee} aria-hidden="true">
                   <img src={telegramPills} alt="" loading="lazy" className={styles.telegramImg} />
                 </div>
@@ -223,14 +207,10 @@ export default function WhatWeBuild() {
                 Нативные и кроссплатформенные приложения с удобным интерфейсом и стабильной
                 работой.
               </p>
-<<<<<<< HEAD
-              <PriceButton tone="dark">От 78 960 ₽</PriceButton>
-=======
               <PriceButton tone="dark" to="/services/mobile-app">
                 От 78 960 ₽
               </PriceButton>
               <CardLinkOverlay to="/services/mobile-app" label="Мобильные и десктоп-приложения" />
->>>>>>> d2810cf (Politik konfid)
               <div className={styles.laptopArt} aria-hidden="true">
                 <div className={styles.laptopGlow} />
                 <img src={laptopMockup} alt="" loading="lazy" />
