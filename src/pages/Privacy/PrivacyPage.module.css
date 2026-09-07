@@ -1,0 +1,113 @@
+.page {
+  background: var(--bg-light);
+  padding: clamp(46px, 7vw, 88px) 0;
+}
+
+.wrap {
+  max-width: 900px;
+}
+
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 22px;
+  margin-bottom: 34px;
+  border-radius: var(--radius-md);
+  background: rgba(252, 128, 3, 0.08);
+  border: 1px solid rgba(252, 128, 3, 0.32);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-on-light-muted-80);
+}
+
+.notice svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--orange-2);
+}
+
+.h2 {
+  font-size: clamp(21px, 2.3vw, 28px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 34px 0 14px;
+}
+
+.h2:first-of-type {
+  margin-top: 0;
+}
+
+.p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+.p + .p {
+  margin-top: 12px;
+}
+
+.list {
+  margin: 12px 0 0;
+  padding-left: 22px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+.list li + li {
+  margin-top: 8px;
+}
+
+.placeholder {
+  display: block;
+  margin-top: 12px;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed rgba(17, 17, 17, 0.25);
+  background: rgba(17, 17, 17, 0.03);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-on-light-muted-60);
+}
+
+.contacts {
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-body);
+}
+
+.contacts a {
+  color: var(--orange-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.backRow {
+  margin-top: 40px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 28px;
+  border-radius: var(--radius-pill);
+  background: var(--gray-700);
+  color: var(--white);
+  font-size: 16px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.back:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}

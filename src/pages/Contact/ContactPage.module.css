@@ -213,3 +213,111 @@
     padding: 40px 0;
   }
 }
+/* ---------- Дополнительные поля формы заявки ---------- */
+.select,
+.textarea {
+  margin-top: 8px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--white);
+}
+
+.select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 46px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+}
+
+/* Список вариантов рисует ОС — на тёмном фоне нужен контрастный текст. */
+.select option {
+  color: #111111;
+  background: #ffffff;
+}
+
+.textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: rgba(252, 128, 3, 0.6);
+}
+
+.req {
+  color: var(--orange);
+}
+
+.inputError {
+  border-color: #e5484d;
+  background: rgba(229, 72, 77, 0.12);
+}
+
+.fieldError {
+  margin-top: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #ff8a8d;
+}
+
+.consentRow {
+  margin-top: 22px;
+}
+
+.formError {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 13px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(229, 72, 77, 0.14);
+  border: 1px solid rgba(229, 72, 77, 0.4);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #ffb3b5;
+}
+
+.formError svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Кнопка стоит сразу под согласием — так пользователь видит их вместе. */
+.submit {
+  margin-top: 18px;
+}
+
+.submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.loader {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: contactSpin 0.7s linear infinite;
+}
+
+@keyframes contactSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}

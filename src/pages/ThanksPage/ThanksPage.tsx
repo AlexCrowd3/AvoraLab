@@ -1,3 +1,4 @@
+import Seo from '../../components/Seo/Seo'
 import { Link } from 'react-router-dom'
 import { CheckCircle2, ArrowLeft } from 'lucide-react'
 import Header from '../../components/Header/Header'
@@ -7,6 +8,12 @@ import styles from './ThanksPage.module.css'
 export default function ThanksPage() {
   return (
     <>
+      <Seo
+        title="Заявка отправлена — Avora Lab"
+        description="Спасибо за заявку. Мы свяжемся с вами в ближайшее время."
+        path="/thanks"
+        noindex
+      />
       <Header />
 
       <main className={styles.page}>

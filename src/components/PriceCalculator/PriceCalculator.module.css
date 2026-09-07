@@ -327,3 +327,27 @@
     justify-content: center;
   }
 }
+/* ---------- Согласие на обработку персональных данных ---------- */
+.consentRow {
+  margin-top: 20px;
+}
+
+.formError {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(229, 72, 77, 0.14);
+  border: 1px solid rgba(229, 72, 77, 0.4);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.45;
+  color: #ffb3b5;
+}
+
+.formError svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}

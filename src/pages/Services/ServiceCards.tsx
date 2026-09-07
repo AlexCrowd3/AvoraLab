@@ -11,6 +11,7 @@ import iphoneStackNew from '../../assets/serviceCards/web-shop.png'
 import webservicesIcons from '../../assets/serviceCards/web-service.png'
 import telegramBots from '../../assets/serviceCards/telegram-bots.png'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { SERVICES } from '../../data/services'
 import styles from './ServiceCards.module.css'
 
 function handleCtaGlowMove(e: MouseEvent<HTMLElement>) {
@@ -48,27 +49,63 @@ function Features({ items }: { items: string[] }) {
   )
 }
 
-function LandingVisual() {
-  return (
-    <div className={`${styles.visual} ${styles.visualWide}`}>
-      <img src={landingPreview} alt="" loading="lazy" className={styles.visualImg} />
-    </div>
-  )
+/**
+ * Оформление визуальной части каждой карточки. Ключ — slug услуги из
+ * src/data/services.ts, картинки и классы оставлены прежними, чтобы
+ * не менять сложившийся вид страницы.
+ */
+const VISUALS: Record<string, { src: string; wrap: string; imgClass?: string; alt: string }> = {
+  landing: {
+    src: landingPreview,
+    wrap: styles.visualWide,
+    alt: 'Лендинг, разработанный Avora Lab',
+  },
+  'online-store': {
+    src: iphoneStackNew,
+    wrap: styles.visualNarrow,
+    imgClass: styles.storeVisualImg,
+    alt: 'Интернет-магазин на телефоне',
+  },
+  'web-service': {
+    src: webservicesIcons,
+    wrap: styles.visualNarrow,
+    alt: 'Веб-сервис и личный кабинет',
+  },
+  'telegram-bot': {
+    src: telegramBots,
+    wrap: styles.visualMid,
+    alt: 'Telegram-бот для бизнеса',
+  },
+  'mobile-app': {
+    src: laptopMockup,
+    wrap: styles.visualMid,
+    alt: 'Мобильное и десктоп-приложение',
+  },
+  'express-development': {
+    src: expressLaptopClock,
+    wrap: styles.visualNarrow,
+    imgClass: styles.expressImg,
+    alt: 'Экспресс-разработка в сжатые сроки',
+  },
 }
 
-function StoreVisual() {
+function Visual({ slug }: { slug: string }) {
+  const v = VISUALS[slug]
+  if (!v) return null
   return (
-    <div className={`${styles.visual} ${styles.visualNarrow}`}>
+    <div className={`${styles.visual} ${v.wrap}`}>
       <img
-        src={iphoneStackNew}
-        alt=""
+        src={v.src}
+        alt={v.alt}
         loading="lazy"
-        className={`${styles.visualImg} ${styles.storeVisualImg}`}
+        decoding="async"
+        className={`${styles.visualImg} ${v.imgClass ?? ''}`}
       />
     </div>
   )
 }
 
+<<<<<<< HEAD
 function WebServicesVisual() {
   return (
     <div className={`${styles.visual} ${styles.visualNarrow}`}>
@@ -213,6 +250,8 @@ const SERVICES = [
   },
 ]
 
+=======
+>>>>>>> d2810cf (Politik konfid)
 export default function ServiceCards() {
   const containerRef = useRef<HTMLDivElement>(null)
   const isMobile = useIsMobile(768) // < 768px = мобилка
@@ -244,7 +283,7 @@ export default function ServiceCards() {
 
         return (
           <motion.div
-            key={service.key}
+            key={service.slug}
             className={styles.cardWrap}
             style={{
               top: `${100 + i}px`,
@@ -258,34 +297,44 @@ export default function ServiceCards() {
                 }),
             }}
           >
-            <article
-              className={`${styles.card} ${styles[service.cardClass]}`}
-              style={
-                {
-                  '--text-w': `${service.textWidth}px`,
-                } as CSSVars
-              }
+            {/* Вся карточка — ссылка на отдельную страницу услуги. */}
+            <Link
+              to={`/services/${service.slug}`}
+              className={styles.cardLink}
+              aria-label={`Подробнее об услуге: ${service.shortTitle}`}
             >
-              <div className={styles.content}>
-                <div className={styles.titleBlock}>
-                  <div className={styles.headRow}>
-                    <h3 className={styles.title}>{service.title}</h3>
+              <article
+                className={`${styles.card} ${styles[service.cardClass]}`}
+                style={
+                  {
+                    '--text-w': `${service.textWidth}px`,
+                  } as CSSVars
+                }
+              >
+                <div className={styles.content}>
+                  <div className={styles.titleBlock}>
+                    <div className={styles.headRow}>
+                      <h3 className={styles.title}>{service.cardTitle}</h3>
+                    </div>
+                    <p className={styles.desc}>{service.cardDesc}</p>
                   </div>
-                  <p className={styles.desc}>{service.desc}</p>
+
+                  <Features items={service.includes} />
+
+                  <span className={styles.priceText}>{service.cardPrice}</span>
+
+                  <span className={styles.cardActions}>
+                    <span className={styles.durationBtn}>
+                      <span>{service.cardDuration}</span>
+                      <ArrowUpRight size={20} />
+                    </span>
+                    <span className={styles.detailBtn}>Подробнее об услуге</span>
+                  </span>
                 </div>
 
-                <Features items={service.features} />
-
-                <span className={styles.priceText}>{service.price}</span>
-
-                <Link to="/contact" className={styles.durationBtn}>
-                  <span>{service.duration}</span>
-                  <ArrowUpRight size={20} />
-                </Link>
-              </div>
-
-              <service.Visual />
-            </article>
+                <Visual slug={service.slug} />
+              </article>
+            </Link>
 
             {service.badge && (
               <span className={styles.badge}>{service.badge}</span>
@@ -318,9 +367,9 @@ export default function ServiceCards() {
               <Link to="/contact" className={styles.ctaBtnPrimary}>
                 Обсудить проект <ArrowUpRight size={24} />
               </Link>
-              <a href="/#services" className={styles.ctaBtnGlass}>
+              <Link to="/cases" className={styles.ctaBtnGlass}>
                 Смотреть кейсы <BookOpen size={22} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

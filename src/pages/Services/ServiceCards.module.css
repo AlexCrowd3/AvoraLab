@@ -830,3 +830,68 @@
     border-radius: var(--radius-xl);
   }
 }
+/* ==========================================================================
+   Карточка услуги — ссылка на отдельную страницу услуги (/services/:slug).
+   Ссылка обёрнута вокруг всей карточки, поэтому внутри не должно быть
+   других интерактивных элементов: кнопки внутри превращены в span'ы
+   и сохраняют прежнее оформление.
+   ========================================================================== */
+.cardLink {
+  display: block;
+  color: inherit;
+  border-radius: var(--radius-3xl);
+}
+
+.cardLink:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 4px;
+}
+
+.cardActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 20px;
+}
+
+/* Внутри строки действий отступ снизу у экспресс-кнопки не нужен. */
+.cardActions .durationBtn {
+  margin-bottom: 0;
+}
+
+.cardLink:hover .durationBtn {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.detailBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-on-light-muted-80);
+  border-bottom: 1.5px solid rgba(17, 17, 17, 0.25);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.cardDark .detailBtn,
+.cardExpress .detailBtn,
+.cardPurple .detailBtn,
+.cardBlue .detailBtn {
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+
+.cardLink:hover .detailBtn {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+@media (max-width: 560px) {
+  .detailBtn {
+    font-size: 15px;
+  }
+}

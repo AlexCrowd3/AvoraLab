@@ -1,0 +1,711 @@
+/* ==========================================================================
+   Страница услуги. Оформление наследует текущий стиль Avora Lab:
+   тёмная шапка, светлое тело, скруглённые карточки, оранжевый акцент.
+   ========================================================================== */
+
+/* ---------- Хлебные крошки ---------- */
+.breadcrumbs {
+  background: var(--bg-dark);
+  padding-top: 24px;
+}
+
+.crumbsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.crumbsRow a:hover {
+  color: var(--white);
+}
+
+.crumbSep {
+  opacity: 0.4;
+}
+
+.crumbCurrent {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Шапка услуги ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-dark);
+  padding: clamp(32px, 5vw, 60px) 0 clamp(50px, 7vw, 90px);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(28px, 4vw, 60px);
+  align-items: center;
+}
+
+.backPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.backPill:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-2px);
+}
+
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.h1 {
+  font-size: clamp(32px, 4.6vw, 58px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(255, 255, 255, 0.72) 45%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lead {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.7vw, 20px);
+  font-weight: 300;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.62);
+  max-width: 56ch;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.metaPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-body);
+  font-size: 15px;
+}
+
+.metaPill strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 28px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-orange);
+  color: var(--white);
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.btnGlass {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 28px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--white);
+  font-size: 17px;
+  font-weight: 500;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btnGlass:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.heroVisual {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--gradient-hero-card);
+  padding: clamp(20px, 3vw, 40px);
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+}
+
+.heroVisualImg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 340px;
+}
+
+/* ---------- Общая сетка тела страницы ---------- */
+.body {
+  background: var(--bg-light);
+  padding: clamp(46px, 7vw, 88px) 0;
+}
+
+.blockTitle {
+  font-size: clamp(24px, 2.8vw, 36px);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.blockTitle svg {
+  flex-shrink: 0;
+  color: var(--orange);
+}
+
+.blockLead {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-on-light-muted-80);
+  max-width: 78ch;
+}
+
+.blockLead + .blockLead {
+  margin-top: 14px;
+}
+
+.section + .section {
+  margin-top: clamp(46px, 6vw, 80px);
+}
+
+/* ---------- Две колонки: кому подходит / что входит ---------- */
+.twoCol {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.panel {
+  background: var(--white);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-lg);
+  padding: clamp(22px, 3vw, 34px);
+}
+
+.panelDark {
+  background: var(--gradient-dark-card);
+  border-color: transparent;
+}
+
+.panelTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+}
+
+.panelDark .panelTitle {
+  color: var(--white);
+}
+
+.panelTitle svg {
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.listItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--text-body);
+}
+
+.panelDark .listItem {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.listIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--orange);
+}
+
+.panelDark .listIcon {
+  color: var(--orange);
+}
+
+/* ---------- Что вы получите ---------- */
+/* Flex вместо grid: карточек в блоке бывает 4, 5 или 6, и при сетке
+   последняя строка оставляла пустое место. Здесь элементы последней
+   строки растягиваются и занимают её целиком. */
+.resultGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.resultCard {
+  /* 320px даёт 3 карточки в ряд на десктопе: при 5–6 пунктах строки
+     получаются ровнее, чем при четырёх. */
+  flex: 1 1 320px;
+  background: var(--white);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resultCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+}
+
+.resultNum {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--gradient-orange);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.resultText {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--text-body);
+}
+
+/* ---------- Этапы ---------- */
+.stages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.stageCard {
+  flex: 1 1 230px;
+  position: relative;
+  background: var(--gradient-stage-card);
+  border-radius: var(--radius-lg);
+  padding: 26px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.stageNum {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.18);
+}
+
+.stageTitle {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.stageText {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ---------- Стоимость ---------- */
+.priceCard {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(24px, 4vw, 50px);
+  background: var(--gradient-light-panel);
+  border-radius: var(--radius-2xl);
+  padding: clamp(26px, 4vw, 48px);
+  align-items: start;
+}
+
+.priceMain {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.priceLabel {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-on-light-muted-60);
+}
+
+.priceValue {
+  font-size: clamp(32px, 4.4vw, 52px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  background: var(--gradient-orange);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.priceDuration {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background: rgba(17, 17, 17, 0.06);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-body);
+}
+
+.priceNote {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-on-light-muted-80);
+  max-width: 48ch;
+}
+
+.priceCta {
+  margin-top: 6px;
+  align-self: flex-start;
+}
+
+.priceFactorsTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+/* ---------- Портфолио ---------- */
+.casesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.caseCard {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.caseCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.09);
+}
+
+.caseImg {
+  width: 100%;
+  /* height:auto обязателен: атрибуты width/height у <img> работают как
+     презентационная подсказка и иначе перебивают aspect-ratio. */
+  height: auto;
+  aspect-ratio: 1105 / 630;
+  object-fit: cover;
+}
+
+.caseBody {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.caseCategory {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--orange-2);
+}
+
+.caseTitle {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+.caseDesc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--text-on-light-muted-60);
+}
+
+.caseLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--orange-2);
+}
+
+/* ---------- FAQ ---------- */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 980px;
+}
+
+.faqItem {
+  background: var(--white);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.faqItem[open] {
+  border-color: rgba(252, 128, 3, 0.4);
+}
+
+.faqQ {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.faqQ::-webkit-details-marker {
+  display: none;
+}
+
+.faqQ:hover {
+  color: var(--orange-2);
+}
+
+.faqIcon {
+  flex-shrink: 0;
+  color: var(--orange);
+  transition: transform 0.25s ease;
+}
+
+.faqItem[open] .faqIcon {
+  transform: rotate(180deg);
+}
+
+.faqA {
+  padding: 0 24px 22px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-on-light-muted-80);
+  max-width: 80ch;
+}
+
+/* ---------- Смежные услуги + возврат к списку ---------- */
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.relatedCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--white);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.relatedCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(252, 128, 3, 0.5);
+}
+
+.relatedTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.relatedTitle svg {
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+.relatedDesc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--text-on-light-muted-60);
+}
+
+.relatedPrice {
+  margin-top: 4px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--orange-2);
+}
+
+.backRow {
+  margin-top: clamp(32px, 5vw, 56px);
+  display: flex;
+  justify-content: center;
+}
+
+.backAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 30px;
+  border-radius: var(--radius-pill);
+  background: var(--gray-700);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.backAll:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 1024px) {
+  .heroInner,
+  .priceCard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .heroVisual {
+    order: -1;
+    min-height: 180px;
+  }
+
+  .heroVisualImg {
+    max-height: 240px;
+  }
+}
+
+@media (max-width: 560px) {
+  .ctaRow {
+    width: 100%;
+  }
+
+  .btnPrimary,
+  .btnGlass {
+    flex: 1 1 100%;
+    justify-content: center;
+    padding: 16px 22px;
+    font-size: 16px;
+  }
+
+  .heroVisual,
+  .priceCard {
+    border-radius: var(--radius-lg);
+  }
+
+  .faqQ {
+    padding: 17px 18px;
+    font-size: 16px;
+  }
+
+  .faqA {
+    padding: 0 18px 18px;
+    font-size: 15px;
+  }
+}

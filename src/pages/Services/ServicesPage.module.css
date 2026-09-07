@@ -211,3 +211,73 @@
     background: linear-gradient(180deg, var(--bg-dark) 40%, transparent 100%);
   }
 }
+
+/* ==========================================================================
+   Быстрый выбор услуги — ссылки на отдельные страницы услуг.
+   ========================================================================== */
+.quickNav {
+  background: var(--bg-light);
+  padding: clamp(38px, 6vw, 70px) 0 0;
+}
+
+.quickNavTitle {
+  font-size: clamp(24px, 2.8vw, 34px);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.quickNavText {
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--text-on-light-muted-60);
+  max-width: 70ch;
+}
+
+.quickNavGrid {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.quickNavCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 22px;
+  background: var(--white);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-md);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quickNavCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(252, 128, 3, 0.55);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+}
+
+.quickNavCardTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.quickNavCardTitle svg {
+  flex-shrink: 0;
+  color: var(--orange);
+}
+
+.quickNavCardMeta {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-on-light-muted-60);
+}

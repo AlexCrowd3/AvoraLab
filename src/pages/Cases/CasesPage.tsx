@@ -1,3 +1,4 @@
+import Seo, { breadcrumbsJsonLd } from '../../components/Seo/Seo'
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
@@ -33,6 +34,17 @@ export default function CasesPage() {
 
   return (
     <>
+      <Seo
+        title="Кейсы Avora Lab — примеры сайтов, приложений и ботов"
+        description="Портфолио студии Avora Lab: лендинги, мобильные приложения и сервисы. Задача клиента, решение, сроки и технологии по каждому проекту."
+        path="/cases"
+        jsonLd={[
+          breadcrumbsJsonLd([
+            { name: 'Главная', path: '/' },
+            { name: 'Кейсы', path: '/cases' },
+          ]),
+        ]}
+      />
       <Header />
       <main>
         <PageHero

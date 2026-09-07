@@ -1,3 +1,4 @@
+import Seo, { breadcrumbsJsonLd } from '../../components/Seo/Seo'
 import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
@@ -52,6 +53,17 @@ export default function CareersPage() {
 
   return (
     <>
+      <Seo
+        title="Вакансии Avora Lab — работа в студии разработки"
+        description="Открытые вакансии Avora Lab: разработка, дизайн и управление проектами. Условия работы и как откликнуться."
+        path="/careers"
+        jsonLd={[
+          breadcrumbsJsonLd([
+            { name: 'Главная', path: '/' },
+            { name: 'Вакансии', path: '/careers' },
+          ]),
+        ]}
+      />
       <Header />
       <main>
         <PageHero

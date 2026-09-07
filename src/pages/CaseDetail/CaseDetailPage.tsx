@@ -12,6 +12,7 @@ import {
   ListOrdered,
   Paperclip,
 } from 'lucide-react'
+import Seo, { SITE_URL, breadcrumbsJsonLd } from '../../components/Seo/Seo'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import { CASES } from '../../data/cases'
@@ -63,6 +64,26 @@ export default function CaseDetailPage() {
 
   return (
     <>
+      <Seo
+        title={`${caseItem.title} — кейс Avora Lab`}
+        description={caseItem.desc.slice(0, 300)}
+        path={`/cases/${caseItem.slug}`}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'CreativeWork',
+            name: caseItem.title,
+            description: caseItem.desc,
+            url: `${SITE_URL}/cases/${caseItem.slug}`,
+            creator: { '@type': 'Organization', name: 'Avora Lab', url: SITE_URL },
+          },
+          breadcrumbsJsonLd([
+            { name: 'Главная', path: '/' },
+            { name: 'Кейсы', path: '/cases' },
+            { name: caseItem.title, path: `/cases/${caseItem.slug}` },
+          ]),
+        ]}
+      />
       <Header />
       <main>
         <section className={styles.heroSection}>

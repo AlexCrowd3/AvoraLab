@@ -65,7 +65,10 @@ export default function Header() {
   }, [menuOpen])
 
   function renderNavItem(item: NavItem, className: NavClassNames) {
-    const isActive = item.href === '/' ? pathname === '/' : pathname === item.href
+    // Для разделов подсвечиваем пункт и на вложенных страницах:
+    // /services/landing тоже относится к разделу «Услуги».
+    const isActive =
+      item.href === '/' ? pathname === '/' : pathname === item.href || pathname.startsWith(`${item.href}/`)
     const cls = isActive ? className.active : className.item
     if (item.href.startsWith('/#')) {
       return (

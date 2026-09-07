@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
+import { AlertCircle, ArrowLeft, ArrowRight, Check } from 'lucide-react'
+import ConsentCheckbox, { CONSENT_TEXT } from '../ConsentCheckbox/ConsentCheckbox'
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
 import iphoneRockMockup from '../../assets/images/iphone-rock-mockup.png'
 import landingPreview from '../../assets/images/landing-preview.webp'
@@ -63,6 +64,9 @@ export default function PriceCalculator() {
   const [answers, setAnswers] = useState<Answers>({ type: 'Лендинг / промо-сайт' })
   const [contact, setContact] = useState<Contact>({ name: '', telegram: '' })
   const [submitted, setSubmitted] = useState(false)
+  // Согласие на обработку персональных данных: обязательное, по умолчанию снято.
+  const [consent, setConsent] = useState(false)
+  const [formError, setFormError] = useState('')
   const { containerRef, isVisible } = useRevealOnScroll(1)
   const [loading, setLoading] = useState(false)
 
@@ -88,6 +92,21 @@ export default function PriceCalculator() {
 
     if (loading) return
 
+    // Валидация: без контактов и согласия заявку не отправляем.
+    if (!contact.name.trim()) {
+      setFormError('Укажите, как к вам обращаться')
+      return
+    }
+    if (!contact.telegram.trim()) {
+      setFormError('Оставьте Telegram или телефон — иначе мы не сможем прислать расчёт')
+      return
+    }
+    if (!consent) {
+      setFormError('Отметьте согласие на обработку персональных данных')
+      return
+    }
+
+    setFormError('')
     setLoading(true)
 
     try {
@@ -115,6 +134,8 @@ export default function PriceCalculator() {
 
         contact: contact.telegram,
         name: contact.name,
+
+        consent: `да — ${CONSENT_TEXT}`,
       }
 
       await fetch(GOOGLE_SCRIPT_URL, {
@@ -129,7 +150,9 @@ export default function PriceCalculator() {
       setSubmitted(true)
     } catch (error) {
       console.error(error)
-      alert('Ошибка отправки')
+      setFormError(
+        'Не удалось отправить заявку. Проверьте соединение и попробуйте ещё раз.'
+      )
     } finally {
       setLoading(false)
     }
@@ -222,7 +245,7 @@ export default function PriceCalculator() {
                   </div>
                 </>
               ) : (
-                <form className={styles.contactForm} onSubmit={handleSubmit}>
+                <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
                   <h3 className={styles.stepTitle}>
                     Шаг {step} из {TOTAL_STEPS} — Куда прислать расчёт?
                   </h3>
@@ -244,6 +267,25 @@ export default function PriceCalculator() {
                       className={styles.input}
                     />
                   </div>
+
+                  <div className={styles.consentRow}>
+                    <ConsentCheckbox
+                      id="calc-consent"
+                      onDark
+                      checked={consent}
+                      onChange={(v) => {
+                        setConsent(v)
+                        if (v) setFormError('')
+                      }}
+                    />
+                  </div>
+
+                  {formError && (
+                    <p className={styles.formError} role="alert">
+                      <AlertCircle size={18} />
+                      <span>{formError}</span>
+                    </p>
+                  )}
 
                   <div className={styles.navRow}>
                     <button type="button" onClick={handleBack} className={styles.backBtn}>

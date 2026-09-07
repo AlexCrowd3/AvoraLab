@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Send, Mail } from 'lucide-react'
 import Logo from '../Header/Logo'
+import { SERVICES } from '../../data/services'
 import styles from './Footer.module.css'
 
 const NAV_COL = {
@@ -58,6 +59,19 @@ export default function Footer() {
           </ul>
         </nav>
 
+        {/* Перелинковка со страницами услуг: помогает и пользователю,
+            и индексации — каждая страница услуги доступна с любой страницы. */}
+        <nav className={styles.navCol} aria-label="Услуги">
+          <h3 className={styles.colTitle}>Услуги</h3>
+          <ul className={styles.linkList}>
+            {SERVICES.map((s) => (
+              <li key={s.slug}>
+                <Link to={`/services/${s.slug}`}>{s.shortTitle}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         <nav className={styles.navCol} aria-label="Студия">
           <h3 className={styles.colTitle}>{STUDIO_COL.title}</h3>
           <ul className={styles.linkList}>
@@ -90,6 +104,13 @@ export default function Footer() {
             </li>
           </ul>
         </div>
+      </div>
+
+      <div className={`container ${styles.bottomBar}`}>
+        <span className={styles.copy}>© {new Date().getFullYear()} Avora Lab</span>
+        <Link to="/privacy" className={styles.policyLink}>
+          Политика конфиденциальности
+        </Link>
       </div>
     </footer>
   )

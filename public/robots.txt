@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Служебные страницы в поиске не нужны
+Disallow: /thanks
+Disallow: /privacy
+
+# Параметры рекламных кампаний не должны плодить дубли страниц
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&gclid
+
+Sitemap: https://avoralab.ru/sitemap.xml
+Host: https://avoralab.ru

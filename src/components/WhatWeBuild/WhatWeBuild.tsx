@@ -10,12 +10,39 @@ import webservicesIcons from '../../assets/images/webservices-icons.svg'
 import telegramPills from '../../assets/images/telegram-pills.svg'
 import styles from './WhatWeBuild.module.css'
 
-function PriceButton({ children, tone = 'orange' }: { children: ReactNode; tone?: string }) {
+function PriceButton({
+  children,
+  tone = 'orange',
+  to = '/contact',
+}: {
+  children: ReactNode
+  tone?: string
+  /** Куда ведёт кнопка. По умолчанию — форма заявки, на карточках услуг — страница услуги. */
+  to?: string
+}) {
   return (
-    <Link to="/contact" className={`${styles.priceBtn} ${styles[`tone-${tone}`]}`}>
+    <Link to={to} className={`${styles.priceBtn} ${styles[`tone-${tone}`]}`}>
       <span>{children}</span>
       <ArrowUpRight size={24} />
     </Link>
+  )
+}
+
+/**
+ * Невидимая ссылка поверх всей карточки: клик в любом месте карточки
+ * открывает страницу услуги. Для скринридеров скрыта — доступная ссылка
+ * находится в заголовке карточки, чтобы не дублировать один и тот же
+ * пункт в списке ссылок.
+ */
+function CardLinkOverlay({ to, label }: { to: string; label: string }) {
+  return (
+    <Link
+      to={to}
+      className={styles.cardOverlayLink}
+      aria-hidden="true"
+      tabIndex={-1}
+      title={label}
+    />
   )
 }
 
@@ -54,14 +81,25 @@ export default function WhatWeBuild() {
               >
                 <span className={styles.cardGlow} aria-hidden="true" />
                 <div className={styles.cardHeadRow}>
-                  <h3 className={styles.cardTitleDark}>Лендинги и промо сайты</h3>
+                  <h3 className={styles.cardTitleDark}>
+                    <Link to="/services/landing" className={styles.cardTitleLink}>
+                      Лендинги и промо сайты
+                    </Link>
+                  </h3>
                   <span className={`${styles.softBadge} ${styles.badgeOrange}`}>Популярно</span>
                 </div>
                 <p className={styles.cardTextDark}>
                   Одностраничники, которые продают. Чистый дизайн, быстрая загрузка и акцент на
                   заявки.
                 </p>
+<<<<<<< HEAD
                 <PriceButton tone="orange">от 24 900 ₽</PriceButton>
+=======
+                <PriceButton tone="orange" to="/services/landing">
+                  от 24 900 ₽
+                </PriceButton>
+                <CardLinkOverlay to="/services/landing" label="Лендинги и промо сайты" />
+>>>>>>> d2810cf (Politik konfid)
                 <div className={styles.landingArt} aria-hidden="true">
                   <div className={styles.landingGlow} />
                   <img src={landingPreview} alt="" loading="lazy" />
@@ -75,14 +113,25 @@ export default function WhatWeBuild() {
               >
                 <span className={styles.cardGlow} aria-hidden="true" />
                 <div className={styles.cardHeadRow}>
-                  <h3 className={styles.cardTitleLight}>Интернет-магазины</h3>
+                  <h3 className={styles.cardTitleLight}>
+                    <Link to="/services/online-store" className={styles.cardTitleLink}>
+                      Интернет-магазины
+                    </Link>
+                  </h3>
                   <span className={`${styles.softBadge} ${styles.badgeWhite}`}>Выгодно</span>
                 </div>
                 <p className={`${styles.cardTextLight} ${styles.storeCardText}`}>
                   Полноценные магазины с каталогом, корзиной, оплатой и личным кабинетом. Готовы к
                   запуску рекламы.
                 </p>
+<<<<<<< HEAD
                 <PriceButton tone="white-orange">От 49 900 ₽</PriceButton>
+=======
+                <PriceButton tone="white-orange" to="/services/online-store">
+                  От 49 900 ₽
+                </PriceButton>
+                <CardLinkOverlay to="/services/online-store" label="Интернет-магазины" />
+>>>>>>> d2810cf (Politik konfid)
                 <div className={styles.storeArt} aria-hidden="true">
                   <img src={iphoneStackNew} alt="" loading="lazy" className={styles.storeStackImg} />
                 </div>
@@ -96,12 +145,23 @@ export default function WhatWeBuild() {
                 onMouseMove={handleCardGlow}
               >
                 <span className={styles.cardGlow} aria-hidden="true" />
-                <h3 className={styles.narrowTitle2Line}>Веб сервисы и личные кабинеты</h3>
+                <h3 className={styles.narrowTitle2Line}>
+                  <Link to="/services/web-service" className={styles.cardTitleLink}>
+                    Веб сервисы и личные кабинеты
+                  </Link>
+                </h3>
                 <p className={styles.narrowCardText}>
                   Сложные продукты: личные кабинеты, платформы, автоматизация процессов. Под ваши
                   задачи.
                 </p>
+<<<<<<< HEAD
                 <PriceButton tone="white-dark">От 39 560 ₽</PriceButton>
+=======
+                <PriceButton tone="white-dark" to="/services/web-service">
+                  От 39 560 ₽
+                </PriceButton>
+                <CardLinkOverlay to="/services/web-service" label="Веб-сервисы и личные кабинеты" />
+>>>>>>> d2810cf (Politik konfid)
                 <div className={styles.bubbleField} aria-hidden="true">
                   <img
                     src={webservicesIcons}
@@ -118,12 +178,23 @@ export default function WhatWeBuild() {
                 onMouseMove={handleCardGlow}
               >
                 <span className={styles.cardGlow} aria-hidden="true" />
-                <h3 className={styles.narrowTitle1Line}>Telegram-боты</h3>
+                <h3 className={styles.narrowTitle1Line}>
+                  <Link to="/services/telegram-bot" className={styles.cardTitleLink}>
+                    Telegram-боты
+                  </Link>
+                </h3>
                 <p className={styles.narrowCardText}>
                   Боты для продаж, поддержки, записи и автоматизации. От простых до сложных
                   сценариев с оплатой и CRM.
                 </p>
+<<<<<<< HEAD
                 <PriceButton tone="white-blue">От 7 990 ₽</PriceButton>
+=======
+                <PriceButton tone="white-blue" to="/services/telegram-bot">
+                  От 7 990 ₽
+                </PriceButton>
+                <CardLinkOverlay to="/services/telegram-bot" label="Telegram-боты" />
+>>>>>>> d2810cf (Politik konfid)
                 <div className={styles.marquee} aria-hidden="true">
                   <img src={telegramPills} alt="" loading="lazy" className={styles.telegramImg} />
                 </div>
@@ -139,7 +210,11 @@ export default function WhatWeBuild() {
             >
               <span className={styles.cardGlow} aria-hidden="true" />
               <div className={styles.cardHeadRow}>
-                <h3 className={styles.cardTitleDark}>Мобильные и десктоп-приложения</h3>
+                <h3 className={styles.cardTitleDark}>
+                  <Link to="/services/mobile-app" className={styles.cardTitleLink}>
+                    Мобильные и десктоп-приложения
+                  </Link>
+                </h3>
                 <span className={`${styles.softBadge} ${styles.badgeDark}`}>
                   Полный цикл разработки
                 </span>
@@ -148,7 +223,14 @@ export default function WhatWeBuild() {
                 Нативные и кроссплатформенные приложения с удобным интерфейсом и стабильной
                 работой.
               </p>
+<<<<<<< HEAD
               <PriceButton tone="dark">От 78 960 ₽</PriceButton>
+=======
+              <PriceButton tone="dark" to="/services/mobile-app">
+                От 78 960 ₽
+              </PriceButton>
+              <CardLinkOverlay to="/services/mobile-app" label="Мобильные и десктоп-приложения" />
+>>>>>>> d2810cf (Politik konfid)
               <div className={styles.laptopArt} aria-hidden="true">
                 <div className={styles.laptopGlow} />
                 <img src={laptopMockup} alt="" loading="lazy" />
