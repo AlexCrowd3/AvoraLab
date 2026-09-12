@@ -69,7 +69,7 @@ export default function ServiceDetailPage() {
       name: 'Avora Lab',
       url: SITE_URL,
       telephone: '+7 (931) 979-27-64',
-      email: 'avora-lab@gmail.com',
+      email: 'avoralab86@gmail.com',
       address: { '@type': 'PostalAddress', addressLocality: 'Санкт-Петербург', addressCountry: 'RU' },
     },
     hasOfferCatalog: {
@@ -150,18 +150,6 @@ export default function ServiceDetailPage() {
                 </a>
               </div>
             </div>
-
-            <div className={styles.heroVisual}>
-              <img
-                src={service.image}
-                alt={service.imageAlt}
-                className={styles.heroVisualImg}
-                width={800}
-                height={600}
-                loading="eager"
-                decoding="async"
-              />
-            </div>
           </div>
         </section>
 
@@ -170,7 +158,7 @@ export default function ServiceDetailPage() {
             {/* ---------- Что это такое ---------- */}
             <section className={styles.section}>
               <h2 className={styles.blockTitle}>
-                <Info size={26} />
+                <Info size={26} color='var(--text-primary)' />
                 Что это за услуга
               </h2>
               {service.about.map((p) => (
@@ -185,13 +173,13 @@ export default function ServiceDetailPage() {
               <div className={styles.twoCol}>
                 <div className={styles.panel}>
                   <h2 className={styles.panelTitle}>
-                    <Target size={22} />
+                    <Target size={22} color='var(--text-primary)' />
                     Кому подходит
                   </h2>
                   <ul className={styles.list}>
                     {service.forWhom.map((item) => (
                       <li key={item} className={styles.listItem}>
-                        <Check size={18} className={styles.listIcon} />
+                        <Check size={18} className={styles.listIcon} color='var(--text-primary)'/>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -200,13 +188,13 @@ export default function ServiceDetailPage() {
 
                 <div className={`${styles.panel} ${styles.panelDark}`}>
                   <h2 className={styles.panelTitle}>
-                    <ListChecks size={22} />
+                    <ListChecks size={22} color='var(--white)' />
                     Что входит в разработку
                   </h2>
                   <ul className={styles.list}>
                     {service.includes.map((item) => (
                       <li key={item} className={styles.listItem}>
-                        <Check size={18} className={styles.listIcon} />
+                        <Check size={18} className={styles.listIcon} color='var(--white)' />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -218,7 +206,7 @@ export default function ServiceDetailPage() {
             {/* ---------- Что вы получите ---------- */}
             <section className={styles.section}>
               <h2 className={styles.blockTitle}>
-                <Sparkles size={26} />
+                <Sparkles size={26} color='var(--text-primary)' />
                 Что вы получите в результате
               </h2>
               <div className={styles.resultGrid}>
@@ -234,7 +222,7 @@ export default function ServiceDetailPage() {
             {/* ---------- Этапы работы ---------- */}
             <section className={styles.section}>
               <h2 className={styles.blockTitle}>
-                <ListOrdered size={26} />
+                <ListOrdered size={26} color='var(--text-primary)' />
                 Этапы работы
               </h2>
               <p className={styles.blockLead}>
@@ -253,9 +241,9 @@ export default function ServiceDetailPage() {
             </section>
 
             {/* ---------- Стоимость ---------- */}
-            <section className={styles.section} id="price" style={{ scrollMarginTop: 100 }}>
+            <section className={styles.section}  id="price" style={{ scrollMarginTop: 100 }}>
               <h2 className={styles.blockTitle}>
-                <Wallet size={26} />
+                <Wallet size={26} color='var(--text-primary)' />
                 Сколько это стоит
               </h2>
 
@@ -281,7 +269,7 @@ export default function ServiceDetailPage() {
                   <ul className={styles.list}>
                     {service.priceFactors.map((f) => (
                       <li key={f} className={styles.listItem}>
-                        <Check size={18} className={styles.listIcon} />
+                        <Check size={18} className={styles.listIcon} color='var(--text-primary)' />
                         <span>{f}</span>
                       </li>
                     ))}
@@ -294,7 +282,7 @@ export default function ServiceDetailPage() {
             {portfolio.length > 0 && (
               <section className={styles.section}>
                 <h2 className={styles.blockTitle}>
-                  <BookOpen size={26} />
+                  <BookOpen size={26} color='var(--text-primary)' />
                   Примеры работ
                 </h2>
                 <p className={styles.blockLead}>
@@ -329,7 +317,7 @@ export default function ServiceDetailPage() {
             {/* ---------- FAQ ---------- */}
             <section className={styles.section}>
               <h2 className={styles.blockTitle}>
-                <HelpCircle size={26} />
+                <HelpCircle size={26} color='var(--text-primary)' />
                 Частые вопросы
               </h2>
               <div className={styles.faqList}>
@@ -349,7 +337,7 @@ export default function ServiceDetailPage() {
             {relatedServices.length > 0 && (
               <section className={styles.section}>
                 <h2 className={styles.blockTitle}>
-                  <LayoutGrid size={26} />
+                  <LayoutGrid size={26} color='var(--text-primary)' />
                   Смежные услуги
                 </h2>
                 <div className={styles.relatedGrid}>

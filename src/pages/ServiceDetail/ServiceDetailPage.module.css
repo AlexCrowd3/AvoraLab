@@ -19,6 +19,7 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
+
 .crumbsRow a:hover {
   color: var(--white);
 }
@@ -391,7 +392,7 @@
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: clamp(24px, 4vw, 50px);
-  background: var(--gradient-light-panel);
+  background: var(--white);
   border-radius: var(--radius-2xl);
   padding: clamp(26px, 4vw, 48px);
   align-items: start;

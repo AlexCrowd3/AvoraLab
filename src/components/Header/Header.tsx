@@ -143,8 +143,8 @@ export default function Header() {
                   +7 (931) 979-27-64
                 </a>
 
-                <a href="mailto:avora-lab@gmail.com">
-                  avora-lab@gmail.com
+                <a href="mailto:avoralab86@gmail.com">
+                  avoralab86@gmail.com
                 </a>
               </div>
             </div>

@@ -21,7 +21,7 @@ export default function HomePage() {
     logo: `${SITE_URL}/favicon.svg`,
     description:
       'Веб-студия полного цикла: лендинги, интернет-магазины, веб-сервисы, Telegram-боты и мобильные приложения под ключ.',
-    email: 'avora-lab@gmail.com',
+    email: 'avoralab86@gmail.com',
     telephone: '+7 (931) 979-27-64',
     address: {
       '@type': 'PostalAddress',

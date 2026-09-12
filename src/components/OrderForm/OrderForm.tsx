@@ -156,9 +156,9 @@ export default function OrderForm({
                 <Send size={18} />
                 <span>Telegram</span>
               </a>
-              <a href="mailto:avora-lab@gmail.com" className={styles.contactPill}>
+              <a href="mailto:avoralab86@gmail.com" className={styles.contactPill}>
                 <Mail size={18} />
-                <span>avora-lab@gmail.com</span>
+                <span>avoralab86@gmail.com</span>
               </a>
               <a href="tel:+79319792764" className={styles.contactPill}>
                 <PhoneCall size={18} />

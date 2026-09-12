@@ -115,7 +115,7 @@ export default function PrivacyPage() {
 
             <h2 className={styles.h2}>8. Контакты</h2>
             <p className={styles.contacts}>
-              Электронная почта: <a href="mailto:avora-lab@gmail.com">avora-lab@gmail.com</a>
+              Электронная почта: <a href="mailto:avoralab86@gmail.com">avoralab86@gmail.com</a>
               <br />
               Телефон: <a href="tel:+79319792764">+7 (931) 979-27-64</a>
               <br />

@@ -112,7 +112,7 @@ function buildRoutes(SERVICES, CASES) {
     '@type': 'Organization',
     name: 'Avora Lab',
     url: SITE_URL,
-    email: 'avora-lab@gmail.com',
+    email: 'avoralab86@gmail.com',
     telephone: '+7 (931) 979-27-64',
     address: {
       '@type': 'PostalAddress',
@@ -244,7 +244,7 @@ function buildRoutes(SERVICES, CASES) {
       ],
       body: `
         <h1>Обсудим ваш проект?</h1>
-        <p>Телефон: +7 (931) 979-27-64. Почта: avora-lab@gmail.com. Telegram: @RAFF_LEMs. Санкт-Петербург.</p>
+        <p>Телефон: +7 (931) 979-27-64. Почта: avoralab86@gmail.com. Telegram: @RAFF_LEMs. Санкт-Петербург.</p>
       `,
     },
     {

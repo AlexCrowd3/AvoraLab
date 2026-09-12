@@ -235,9 +235,9 @@ export default function ContactPage() {
                 <Send size={24} />
                 <span>Telegram</span>
               </a>
-              <a href="mailto:avora-lab@gmail.com" className={`${styles.pill} ${styles.pillMail}`}>
+              <a href="mailto:avoralab86@gmail.com" className={`${styles.pill} ${styles.pillMail}`}>
                 <Mail size={24} />
-                <span>avora-lab@gmail.com</span>
+                <span>avoralab86@gmail.com</span>
               </a>
               <a href="tel:+79319792764" className={`${styles.pill} ${styles.pillPhone}`}>
                 <PhoneCall size={24} />

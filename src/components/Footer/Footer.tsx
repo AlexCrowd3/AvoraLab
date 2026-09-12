@@ -38,7 +38,7 @@ export default function Footer() {
             <a href="https://t.me/RAFF_LEMs" className={styles.socialIcon} aria-label="Telegram">
               <Send size={20} />
             </a>
-            <a href="mailto:avora-lab@gmail.com" className={styles.socialIcon} aria-label="Email">
+            <a href="mailto:avoralab86@gmail.com" className={styles.socialIcon} aria-label="Email">
               <Mail size={20} />
             </a>
           </div>
@@ -94,7 +94,7 @@ export default function Footer() {
               <a href="https://t.me/RAFF_LEMs">Telegram</a>
             </li>
             <li>
-              <a href="mailto:avora-lab@gmail.com">avora-lab@gmail.com</a>
+              <a href="mailto:avoralab86@gmail.com">avoralab86@gmail.com</a>
             </li>
             <li>
               <a href="tel:+79319792764">+7 (931) 979-27-64</a>
