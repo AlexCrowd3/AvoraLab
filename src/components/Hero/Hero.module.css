@@ -278,6 +278,10 @@
   .ctaRow {
     justify-content: flex-start;
   }
+
+  .floatBadge {
+    display: none;
+  }
 }
 
 @media (max-width: 560px) {
