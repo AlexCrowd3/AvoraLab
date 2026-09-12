@@ -7,7 +7,7 @@ import iphoneRockMockup from '../../assets/images/iphone-rock-mockup.png'
 import landingPreview from '../../assets/images/landing-preview.webp'
 import styles from './PriceCalculator.module.css'
 
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0XjPrY42JKvPcuBM7LMhpIVEDoe22eB4OV_ZrHXmyYv58htmeGR5nRitTsx0iwUED2A/exec'
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbweW73C-C9D8yhzMm7a9wTmq0LDvZXjqBqWla1XQP-DTRyxRmE4Rs2Gcu9EcamrAaGTCw/exec'
 
 interface Step {
   key: string
@@ -115,14 +115,13 @@ export default function PriceCalculator() {
       )
 
       const payload = {
+        formType: 'calculator',          // ← обязательно
+
         date: new Date().toLocaleString('ru-RU'),
 
         utm: utm
           ? Object.entries(utm)
-            .filter(
-              ([key, value]) =>
-                key.startsWith('utm_') && value
-            )
+            .filter(([key, value]) => key.startsWith('utm_') && value)
             .map(([key, value]) => `${key}=${value}`)
             .join(' | ')
           : '',

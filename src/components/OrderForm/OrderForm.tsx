@@ -102,7 +102,7 @@ export default function OrderForm({
     setLoading(true)
     try {
       await submitLead({
-        formType: 'service',
+        formType: 'contact',
         service: selectedService,
         name: name.trim(),
         phone: phone.trim(),

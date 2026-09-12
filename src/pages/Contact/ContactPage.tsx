@@ -15,7 +15,6 @@ import styles from './ContactPage.module.css'
 interface Errors {
   name?: string
   phone?: string
-  contact?: string
   consent?: string
   submit?: string
 }
@@ -38,7 +37,7 @@ export default function ContactPage() {
   const [phone, setPhone] = useState('')
   const [contact, setContact] = useState('')
   const [comment, setComment] = useState('')
-  const [consent, setConsent] = useState(false) // галочка никогда не стоит заранее
+  const [consent, setConsent] = useState(false)
   const [errors, setErrors] = useState<Errors>({})
   const [loading, setLoading] = useState(false)
 
@@ -47,7 +46,7 @@ export default function ContactPage() {
     if (!name.trim()) next.name = 'Укажите, как к вам обращаться'
     if (!phone.trim()) next.phone = 'Укажите номер телефона'
     else if (!PHONE_RE.test(phone.trim())) next.phone = 'Проверьте формат номера'
-    if (!contact.trim()) next.contact = 'Укажите email или Telegram'
+    // contact больше не обязателен
     if (!consent) next.consent = 'Без согласия на обработку данных мы не можем принять заявку'
     return next
   }
@@ -167,18 +166,16 @@ export default function ContactPage() {
                 {errors.phone && <span className={styles.fieldError}>{errors.phone}</span>}
 
                 <label className={styles.fieldLabel} htmlFor="contact-contact">
-                  Email или Telegram <span className={styles.req}>*</span>
+                  Email или Telegram <span className={styles.optional}>(необязательно)</span>
                 </label>
                 <input
                   id="contact-contact"
                   type="text"
-                  className={`${styles.input} ${errors.contact ? styles.inputError : ''}`}
+                  className={styles.input}
                   placeholder="mail@example.com / @NICK_TG"
                   value={contact}
-                  aria-invalid={Boolean(errors.contact)}
                   onChange={(e) => setContact(e.target.value)}
                 />
-                {errors.contact && <span className={styles.fieldError}>{errors.contact}</span>}
 
                 <label className={styles.fieldLabel} htmlFor="contact-comment">
                   Комментарий к задаче
